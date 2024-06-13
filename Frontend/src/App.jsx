@@ -1,15 +1,15 @@
 
-
 import './App.css'
-import Category from './admin/Admin'
+import Login from './Page/Login'
+
 
 function App() {
 
 
   return (
     <>
-    
-    <Category/>
+    <h1>Event-Mestro</h1>
+    <Login/>
     </>
   )
 }
