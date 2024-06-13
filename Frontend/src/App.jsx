@@ -1,6 +1,7 @@
 
 import './App.css'
 import Login from './Page/Login'
+import Category from './admin/Admin'
 
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
   return (
     <>
     <h1>Event-Mestro</h1>
-    <Login/>
+    {/* <Login/> */}
+    <Category/>
     </>
   )
 }
