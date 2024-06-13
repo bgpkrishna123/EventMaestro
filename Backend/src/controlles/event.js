@@ -44,8 +44,9 @@ const getEvents = async (req, res) => {
     }
 };
 
+
 const eventData = async (req, res) => {
-    const userID = req.userID;
+    const userID = req.user.userID;
     try {
         const user = await UserModel.findById(userID).populate('eventsBooked');
         if (!user) {
@@ -71,7 +72,7 @@ const event = async (req, res) => {
         if (!eventData) {
             return res.status(404).json({ error: true, message: "Event not found" });
         }
-        res.status(200).json({ error: false, item: eventData });
+        res.status(200).json({ error: false,  eventData });
     } catch (error) {
         console.log(error);
         res.status(404).json({ error: true, message: error.message });
@@ -81,20 +82,21 @@ const event = async (req, res) => {
 
 const addEvent = async (req, res) => {
     try {
-        const { title, description, eventDate, category, imageUrl, mode, time, eventPlaner, Price, location, ticketTypes } = req.body;
+        const { title, description, eventDate, category, imageUrl, mode, time, Price, location, ticketTypes } = req.body;
 
-        const organizer = req.username; 
+        const organizer = req.user.username; 
+        const eventPlaner = req.user.userID;
         const newEvent = new EventModel({ title, description, eventDate, mode, time, organizer, category, imageUrl, eventPlaner, Price, location, ticketTypes });
-        
+       
         const savedEvent = await newEvent.save();
 
         await UserModel.findOneAndUpdate({ username: eventPlaner }, { $push: { eventsPlanned: savedEvent._id } }, { new: true });
-        await UserModel.findByIdAndUpdate(req.userID, { $push: { eventsBooked: savedEvent._id } }, { new: true });
+        await UserModel.findByIdAndUpdate(eventPlaner, { $push: { eventsBooked: savedEvent._id } }, { new: true });
 
         res.status(201).json({ success: true, event: savedEvent });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Not able to add Event" });
+        res.status(500).json({ success: false, message: "Not able to add Event" ,error: error.message });
     }
 };
 
