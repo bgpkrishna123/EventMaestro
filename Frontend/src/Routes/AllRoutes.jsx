@@ -1,9 +1,15 @@
-import React from 'react'
+import { Route, Routes } from "react-router-dom";
+import HomePage from "../Page/HomePage";
+import Login from "../Page/Login";
 
-const AllRoutes = () => {
+
+
+export const AllRoutes = () => {
+ 
   return (
-    <div>AllRoutes</div>
-  )
-}
-
-export default AllRoutes
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/auth" element={<Login/>} />
+    </Routes>
+  );
+};
