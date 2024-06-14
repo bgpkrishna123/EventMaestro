@@ -117,7 +117,7 @@ const updateEvent = async (req, res) => {
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
     try {
-        const usersToUpdate = await UserModel.find({ _id: id });
+        const usersToUpdate = await UserModel.find({ eventsPlanned: id });
         for (const user of usersToUpdate) {
             user.eventsPlanned = user.eventsPlanned.filter(eventId => eventId.toString() !== id);
             await user.save();

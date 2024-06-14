@@ -4,6 +4,7 @@ import axios from 'axios';
 import url from '../Components/vars';
 import AppNavbar from '../Components/AppNavbar';
 import {  useNavigate } from "react-router-dom";
+import Footer from '../Components/Footer';
 
 
 const Login = () => {
@@ -117,16 +118,19 @@ const Login = () => {
     <>
     <AppNavbar/>
     <Flex minH="100vh" align="center" justify="center" flexDirection={{ base: 'column', md: 'row' }}pl={10}>
+      {isLoginForm && 
       <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h="90vH" pl={10}>
-        <Image
-          src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
-          alt="Background"
-          objectFit="cover"
-          w="100%"
-          h="90%"
-          borderRadius="50%"
-        />
-      </Box>
+      <Image
+        src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+        alt="Background"
+        objectFit="cover"
+        w="100%"
+        h="90%"
+        borderRadius="50%"
+      />
+    </Box>
+      }
+      
       <Box flex={{ base: 'none', md: '0 0 60%' }} w="100%"  pl={10} pr={80}>
       <Text as="h1" fontSize="3xl" mb={6} textAlign="center" >
           Welcome to Event-Maestro
@@ -192,7 +196,7 @@ const Login = () => {
                   required
                 />
               </FormControl>
-              <Button type="submit" colorScheme="blue" mb={4} w="100%">
+              <Button type="submit" colorScheme="blue" mb={4} >
                 {isLoginForm ? 'Login' : 'Signup'}
               </Button>
               <Flex justify="space-between">
@@ -234,7 +238,20 @@ const Login = () => {
           )}
         </form>
       </Box>
+      {!isLoginForm && 
+      <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h="90vH"ml={-60} pr={10}>
+      <Image
+        src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+        alt="Background"
+        objectFit="cover"
+        w="100%"
+        h="90%"
+        borderRadius="50%"
+      />
+    </Box>
+      }
     </Flex>
+    <Footer/>
     </>
   );
 };
