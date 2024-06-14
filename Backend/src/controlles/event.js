@@ -68,11 +68,11 @@ const eventData = async (req, res) => {
 const event = async (req, res) => {
     const { id } = req.params;
     try {
-        const eventData = await EventModel.findById(id);
+        const eventData = await EventModel.findById({ eventPlaner: id });
         if (!eventData) {
             return res.status(404).json({ error: true, message: "Event not found" });
         }
-        res.status(200).json({ error: false,  eventData });
+        res.status(200).json({ error: false, eventData });
     } catch (error) {
         console.log(error);
         res.status(404).json({ error: true, message: error.message });
@@ -84,10 +84,10 @@ const addEvent = async (req, res) => {
     try {
         const { title, description, eventDate, category, imageUrl, mode, time, Price, location, ticketTypes } = req.body;
 
-        const organizer = req.user.username; 
+        const organizer = req.user.username;
         const eventPlaner = req.user.userID;
         const newEvent = new EventModel({ title, description, eventDate, mode, time, organizer, category, imageUrl, eventPlaner, Price, location, ticketTypes });
-       
+
         const savedEvent = await newEvent.save();
 
         await UserModel.findOneAndUpdate({ username: eventPlaner }, { $push: { eventsPlanned: savedEvent._id } }, { new: true });
@@ -96,7 +96,7 @@ const addEvent = async (req, res) => {
         res.status(201).json({ success: true, event: savedEvent });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Not able to add Event" ,error: error.message });
+        res.status(500).json({ success: false, message: "Not able to add Event", error: error.message });
     }
 };
 
@@ -117,7 +117,7 @@ const updateEvent = async (req, res) => {
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
     try {
-        const usersToUpdate = await UserModel.find({ eventsPlanned: id });
+        const usersToUpdate = await UserModel.find({ _id: id });
         for (const user of usersToUpdate) {
             user.eventsPlanned = user.eventsPlanned.filter(eventId => eventId.toString() !== id);
             await user.save();
