@@ -44,7 +44,7 @@ const logIn = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ msg: "Please provide correct credentials." });
+      return res.status(401).json({ msg: "Please provide correct Password." });
     }
 
     const token = jwt.sign(

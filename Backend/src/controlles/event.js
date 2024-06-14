@@ -68,7 +68,7 @@ const eventData = async (req, res) => {
 const event = async (req, res) => {
     const { id } = req.params;
     try {
-        const eventData = await EventModel.findById(id);
+        const eventData = await EventModel.findById({eventPlaner:id});
         if (!eventData) {
             return res.status(404).json({ error: true, message: "Event not found" });
         }
@@ -117,7 +117,7 @@ const updateEvent = async (req, res) => {
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
     try {
-        const usersToUpdate = await UserModel.find({ eventsPlanned: id });
+        const usersToUpdate = await UserModel.find({  id });
         for (const user of usersToUpdate) {
             user.eventsPlanned = user.eventsPlanned.filter(eventId => eventId.toString() !== id);
             await user.save();
