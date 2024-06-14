@@ -1,19 +1,27 @@
 
-import './App.css'
-import Login from './Page/Login'
-import Category from './admin/Admin'
-
+import React from 'react';
+import Navbar from './Components/Navbar';
+import Login from './Page/Login';
+import './App.css';
+// import { Footer } from 'react-bootstrap/lib/Modal';
+import Footer from './Components/Footer';
+// import Carousel from './Components/Carousel';
+import './App.css';
+import { AllRoutes } from './Routes/AllRoutes';
 
 function App() {
-
-
   return (
-    <>
-    <h1>Event-Mestro</h1>
-    {/* <Login/> */}
-    <Category/>
-    </>
-  )
+
+    <div>
+
+      {/* <Navbar /> */}
+      {/* <Carousel /> */}
+      {/* <Login /> */}
+      <Footer />
+
+      <AllRoutes/>
+    </div>
+  );
 }
 
-export default App
+export default App;
