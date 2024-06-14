@@ -11,7 +11,7 @@ function App() {
     <>
     <h1>Event-Mestro</h1>
     {/* <Login/> */}
-    {/* <Category/> */}
+    <Category/>
     </>
   )
 }
