@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Box, Flex, Image, Text, FormControl, FormLabel, Input, Button, Link, useToast, Checkbox } from '@chakra-ui/react';
 import axios from 'axios';
 import url from '../Components/vars';
-
+import AppNavbar from '../Components/AppNavbar';
+import {  useNavigate } from "react-router-dom";
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const toast = useToast();
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isForgetPassword, setIsForgetPassword] = useState(false);
@@ -63,7 +65,7 @@ const Login = () => {
         isClosable: true,
       });
       localStorage.setItem('token', response.data.token);
-      // Handle further actions after successful login
+      navigate("/")
     } catch (error) {
       toast({
         title: 'Login Failed',
@@ -112,6 +114,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <AppNavbar/>
     <Flex minH="100vh" align="center" justify="center" flexDirection={{ base: 'column', md: 'row' }}pl={10}>
       <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h="90vH" pl={10}>
         <Image
@@ -119,7 +123,8 @@ const Login = () => {
           alt="Background"
           objectFit="cover"
           w="100%"
-          h="100%"
+          h="90%"
+          borderRadius="50%"
         />
       </Box>
       <Box flex={{ base: 'none', md: '0 0 60%' }} w="100%"  pl={10} pr={80}>
@@ -192,10 +197,10 @@ const Login = () => {
               </Button>
               <Flex justify="space-between">
                 <Link onClick={() => setIsForgetPassword(!isForgetPassword)}>
-                  {isLoginForm ? 'Forgot Password?' : 'Back to Login'}
+                  {isLoginForm ? 'Forgot Password?' : ''}
                 </Link>
                 <Link onClick={handleFormSwitch}>
-                  {isLoginForm ? 'Signup' : 'Login'}
+                  {isLoginForm ? 'Signup' : 'Back to Login'}
                 </Link>
               </Flex>
             </>
@@ -203,7 +208,15 @@ const Login = () => {
           {isForgetPassword && (
             <>
               <FormControl id="newPassword" mb={4}>
-                <FormLabel>New Password</FormLabel>
+                <FormLabel>Reset Your Password</FormLabel>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email"
+                  required
+                />
                 <Input
                   type="password"
                   name="password"
@@ -222,6 +235,7 @@ const Login = () => {
         </form>
       </Box>
     </Flex>
+    </>
   );
 };
 

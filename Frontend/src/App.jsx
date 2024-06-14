@@ -1,17 +1,15 @@
 
 import React from 'react';
-import Navbar from './components/Navbar';
-import Login from './Page/Login';
 import './App.css';
+import { AllRoutes } from './Routes/AllRoutes';
+
 
 
 function App() {
   return (
 
     <div>
-      <Navbar />
-      <h1>Event-Mestro</h1>
-      <Login />
+      <AllRoutes/>
     </div>
   );
 }
