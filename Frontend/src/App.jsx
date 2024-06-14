@@ -1,14 +1,18 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './Components/Navbar';
 import Login from './Page/Login';
 import './App.css';
+// import { Footer } from 'react-bootstrap/lib/Modal';
+import Footer from './Components/Footer';
+// import Carousel from './Components/Carousel';
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <h1>Event-Mestro</h1>
-      <Login />
+      {/* <Navbar /> */}
+      {/* <Carousel /> */}
+      {/* <Login /> */}
+      <Footer />
     </div>
   );
 }
