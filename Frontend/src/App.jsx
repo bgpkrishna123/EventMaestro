@@ -1,19 +1,19 @@
 
-import './App.css'
-import Login from './Page/Login'
-import Category from './admin/Admin'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Login from './Page/Login';
+import './App.css';
 
 
 function App() {
-
-
   return (
-    <>
-    <h1>Event-Mestro</h1>
-    {/* <Login/> */}
-    {/* <Category/> */}
-    </>
-  )
+
+    <div>
+      <Navbar />
+      <h1>Event-Mestro</h1>
+      <Login />
+    </div>
+  );
 }
 
-export default App
+export default App;
