@@ -13,6 +13,7 @@ const Container = () => {
       try {
         const response = await axios.get(`${url}/events`);
         setData(response.data.events);
+        console.log(response.data.events);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
