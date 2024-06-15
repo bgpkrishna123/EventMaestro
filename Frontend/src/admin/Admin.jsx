@@ -25,6 +25,8 @@ import {
     useDisclosure,
 } from '@chakra-ui/react';
 import url from '../Components/vars'; // Assuming this contains your API URL
+import AppNavbar from '../Components/AppNavbar';
+import Footer from '../Components/Footer';
 
 const Admin = () => {
     const [data, setData] = useState([]);
@@ -84,8 +86,6 @@ const Admin = () => {
         setLocation(item.location);
         onOpen();
     };
-
-    // Handle update event
     const handleUpdate = () => {
         const token = localStorage.getItem('token');
         const updatedEvent = {
@@ -104,10 +104,10 @@ const Admin = () => {
             }
         })
         .then(response => {
-            // Update the event in the data array
             const updatedData = data.map(item => item._id === selectedItemId ? response.data : item);
             setData(updatedData);
-            onClose(); // Close the modal after successful update
+            onClose();
+            fetchData() 
         })
         .catch(error => {
             console.error('Error updating event:', error);
@@ -115,6 +115,8 @@ const Admin = () => {
     };
 
     return (
+        <>
+        <AppNavbar/>
         <div id='admin'>
             <Heading textAlign="center" color="blue" mb="4">
                 Admin Panel
@@ -240,6 +242,8 @@ const Admin = () => {
                 </ModalContent>
             </Modal>
         </div>
+        <Footer/>
+        </>
     );
 };
 

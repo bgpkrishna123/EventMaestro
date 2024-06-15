@@ -116,13 +116,8 @@ const updateEvent = async (req, res) => {
 
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
-    try {
-        const usersToUpdate = await UserModel.find({ eventsPlanned: id });
-        for (const user of usersToUpdate) {
-            user.eventsPlanned = user.eventsPlanned.filter(eventId => eventId.toString() !== id);
-            await user.save();
-        }
 
+    try {
         const deletedEvent = await EventModel.findByIdAndDelete(id);
         if (!deletedEvent) {
             return res.status(404).json({ success: false, message: "Event not found" });
@@ -134,5 +129,6 @@ const deleteEvent = async (req, res) => {
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
+
 
 module.exports = { getEvents, eventData, event, addEvent, updateEvent, deleteEvent };
