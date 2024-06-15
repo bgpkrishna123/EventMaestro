@@ -5,65 +5,21 @@ const getEvents = async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 20;
-        const { minPrice, maxPrice, city, sort, search } = req.query;
-        const query = {};
 
-        if (minPrice && maxPrice) {
-            query.Price = { $gte: minPrice, $lte: maxPrice };
-        } else if (minPrice) {
-            query.Price = { $gte: minPrice };
-        } else if (maxPrice) {
-            query.Price = { $lte: maxPrice };
-        }
-
-        if (city) {
-            query.location = city;
-        }
-
-        if (search) {
-            query.$or = [
-                { title: { $regex: search, $options: "i" } },
-                { category: { $regex: search, $options: "i" } },
-                { eventPlaner: { $regex: search, $options: "i" } },
-                { organizer: { $regex: search, $options: "i" } },
-            ];
-        }
-
-        const totalCount = await EventModel.countDocuments(query);
+        const totalCount = await EventModel.countDocuments();
         const totalPages = Math.ceil(totalCount / limit);
 
-        const sortCriteria = sort === "desc" ? { eventDate: -1 } : { eventDate: 1 };
-
         const skip = (page - 1) * limit;
-        const events = await EventModel.find(query).skip(skip).sort(sortCriteria).limit(limit);
+        const events = await EventModel.find().skip(skip).limit(limit);
 
-        res.status(200).json({ events, totalPages });
+        res.status(200).json({ events, totalPages, currentPage: page, totalCount });
     } catch (err) {
-        console.error("Error while filtering, searching, and paginating events:", err);
+        console.error("Error while paginating events:", err);
         res.status(500).json({ error: err.message || "Internal Server Error" });
     }
 };
 
 
-const eventData = async (req, res) => {
-    const userID = req.user.userID;
-    try {
-        const user = await UserModel.findById(userID).populate('eventsBooked');
-        if (!user) {
-            return res.status(404).json({ error: true, message: "User not found" });
-        }
-
-        const eventsArray = user.eventsBooked;
-        if (!eventsArray || eventsArray.length === 0) {
-            return res.status(200).json({ error: false, message: "User has no booked events", item: [] });
-        }
-
-        res.status(200).json({ error: false, item: eventsArray });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: true, message: "Internal Server Error" });
-    }
-};
 
 const event = async (req, res) => {
     const { id } = req.params;
@@ -131,4 +87,4 @@ const deleteEvent = async (req, res) => {
 };
 
 
-module.exports = { getEvents, eventData, event, addEvent, updateEvent, deleteEvent };
+module.exports = { getEvents,  event, addEvent, updateEvent, deleteEvent };
