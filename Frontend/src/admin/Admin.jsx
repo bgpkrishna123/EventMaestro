@@ -87,7 +87,7 @@ const Admin = () => {
         onOpen();
     };
 
-    // Handle update event
+    
     const handleUpdate = () => {
         const token = localStorage.getItem('token');
         const updatedEvent = {
@@ -138,7 +138,7 @@ const Admin = () => {
                         mb="4"
                     >
                         <Image
-                            src={item.imageUrl}
+                            src={item.imageUrl[0]}
                             alt={item.location}
                             borderRadius="lg"
                             height="250px"

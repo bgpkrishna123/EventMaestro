@@ -131,7 +131,7 @@ const EventDetailsPage = () => {
           </Box>
 
           <Text fontSize="xl" fontWeight="bold" mt={8} mb={4} color="gray.200">
-            Starting ticket price: ₹{item.price}
+            Starting ticket price: ₹{item.Price}
           </Text>
 
           <Select

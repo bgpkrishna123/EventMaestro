@@ -47,8 +47,9 @@ const Container = () => {
             style={{ maxWidth: "100%" }}
             position="relative"
           >
+            {console.log(item.imageUrl)}
             <Image
-              src={item.imageUrl}
+              src={item.imageUrl[0]}
               alt={item.title}
               borderRadius="md"
               mb={4}
