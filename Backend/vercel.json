@@ -1,17 +1,9 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "index.js",
-        "use": "@vercel/node",
-        "config": { "includeFiles": ["dist/"] }
+    "functions": {
+      "api/my-function.js": {
+        "runtime": "nodejs14.x",
+        "maxDuration": 30
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "index.js"
-      }
-    ]
+    }
   }
-  
