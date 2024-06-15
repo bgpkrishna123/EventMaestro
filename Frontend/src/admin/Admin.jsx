@@ -86,6 +86,8 @@ const Admin = () => {
         setLocation(item.location);
         onOpen();
     };
+
+    // Handle update event
     const handleUpdate = () => {
         const token = localStorage.getItem('token');
         const updatedEvent = {
@@ -104,6 +106,7 @@ const Admin = () => {
             }
         })
         .then(response => {
+            // Update the event in the data array
             const updatedData = data.map(item => item._id === selectedItemId ? response.data : item);
             setData(updatedData);
             onClose();

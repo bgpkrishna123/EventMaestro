@@ -13,9 +13,10 @@ function AppNavbar() {
                     <Link href="/">
                         <Image
                             src={Logo}
-                            width="70px"
-                            height="40px"
+                            width="60px"
+                            height="60px"
                             alt="Logo"
+                            borderRadius="50%"
                         />
                     </Link>
                 </Box>
