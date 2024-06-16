@@ -49,18 +49,39 @@ const Admin = () => {
     }, []);
 
     // Fetch events data from the API
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${url}/events`);
-            const data = await response.json();
-            setData(data.events);
-            console.log(data.events);
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await fetch(`${url}/events`);
+    //         const data = await response.json();
+    //         setData(data.events);
+    //         console.log(data.events);
          
             
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+
+    const fetchData = async () => {
+        const user = localStorage.getItem("userDetails");
+    
+        if (!user) {
+            console.error("User details not found in localStorage");
+            return;
+        }
+    
+        const userDetails = JSON.parse(user); 
+        const id = userDetails.id; 
+    
+        try {
+            const response = await axios.get(`${url}/events/planner/${id}`);
+            setData(response.data.eventData); 
+            console.log(response.data.eventData);
         } catch (err) {
-            console.log(err);
+            console.error('Fetch error:', err);
         }
     };
+    
 
     // Handle event deletion
     const handleDelete = (id) => {
@@ -134,7 +155,7 @@ const Admin = () => {
             {/* <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button> */}
             <EventCreationModal/>
             <div id='container'>
-                {data.map((item,index) => (
+                {data? data.map((item,index) => (
                     <Card
                         key={index}
                         maxW="l"
@@ -179,7 +200,7 @@ const Admin = () => {
                             </ButtonGroup>
                         </CardFooter>
                     </Card>
-                ))}
+                )): <h1>No events have been created yet.</h1>}
             </div>
 
                 {/* Modal for updating an event */}
