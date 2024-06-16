@@ -30,8 +30,8 @@ import Footer from '../Components/Footer';
 import EventCreationModal from '../Components/EventCreationModal';
 import Carousel from '../Components/Carouj';
 
-const Admin = () => {
 
+const Admin = () => {
     const [data, setData] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -49,18 +49,39 @@ const Admin = () => {
     }, []);
 
     // Fetch events data from the API
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${url}/events`);
-            const data = await response.json();
-            setData(data.events);
-            console.log(data.events);
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await fetch(`${url}/events`);
+    //         const data = await response.json();
+    //         setData(data.events);
+    //         console.log(data.events);
          
             
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+
+    const fetchData = async () => {
+        const user = localStorage.getItem("userDetails");
+    
+        if (!user) {
+            console.error("User details not found in localStorage");
+            return;
+        }
+    
+        const userDetails = JSON.parse(user); 
+        const id = userDetails.id; 
+    
+        try {
+            const response = await axios.get(`${url}/events/planner/${id}`);
+            setData(response.data.eventData); 
+            console.log(response.data.eventData);
         } catch (err) {
-            console.log(err);
+            console.error('Fetch error:', err);
         }
     };
+    
 
     // Handle event deletion
     const handleDelete = (id) => {
@@ -116,7 +137,7 @@ const Admin = () => {
                 const updatedData = data.map(item => item._id === selectedItemId ? response.data : item);
                 setData(updatedData);
                 onClose();
-                fetchData()
+                fetchData();
             })
             .catch(error => {
                 console.error('Error updating event:', error);
@@ -134,7 +155,7 @@ const Admin = () => {
             {/* <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button> */}
             <EventCreationModal/>
             <div id='container'>
-                {data.map((item,index) => (
+                {data? data.map((item,index) => (
                     <Card
                         key={index}
                         maxW="l"
@@ -145,13 +166,20 @@ const Admin = () => {
                         bg="white"
                         mb="4"
                     >
-                        <Image
+                        {item.imageUrl?<Image
                             src={item.imageUrl[0]}
                             alt={item.location}
                             borderRadius="lg"
                             height="250px"
                             objectFit="cover"
-                        />
+                        /> :<Image
+                        src={item.title}
+                        alt={item.location}
+                        borderRadius="lg"
+                        height="250px"
+                        objectFit="cover"
+                    /> }
+                         
                         <CardBody>
                             <Stack spacing="0">
                                 <Text fontSize="25" fontWeight="bold" size="md" color="gray.700">
@@ -179,7 +207,7 @@ const Admin = () => {
                             </ButtonGroup>
                         </CardFooter>
                     </Card>
-                ))}
+                )): <h1>No events have been created yet.</h1>}
             </div>
 
                 {/* Modal for updating an event */}

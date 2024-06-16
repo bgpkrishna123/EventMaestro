@@ -7,7 +7,7 @@ const { getEvents, addEvent, updateEvent, deleteEvent, event, searchEventsByTitl
 const eventRouter = express.Router();
 
 eventRouter.get('/', getEvents);
-eventRouter.get('/planner', event);
+eventRouter.get('/planner/:id', event);
 
 eventRouter.get('/search', searchEventsByTitle);
 
