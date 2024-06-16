@@ -1,0 +1,72 @@
+/* App.css */
+
+.bgc-overlay-white8 {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.background_details {
+  padding: 60px 0;
+}
+
+.ulockd-main-title {
+  margin-bottom: 40px;
+}
+
+.ulockd-main-title h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.text-thm2 {
+  color: #ff6f61; /* Adjust this color to match your theme */
+}
+
+.ulockd-main-title img {
+  margin-top: 20px;
+}
+
+.ulockd-pad395 {
+  padding: 15px;
+}
+
+.about-box2 {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.about-box2:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.ab-thumb {
+  margin-bottom: 15px;
+}
+
+.ab-details h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.ab-details p {
+  font-size: 14px;
+  color: #666;
+}
+
+.button_area_sec {
+  margin-top: 30px;
+}
+
+.button_area_sec .btn-primary {
+  background-color: #ff6f61; /* Adjust this color to match your theme */
+  border-color: #ff6f61; /* Adjust this color to match your theme */
+}
+
+.button_area_sec .btn-primary:hover {
+  background-color: #e65c54; /* Adjust this color to match your theme */
+  border-color: #e65c54; /* Adjust this color to match your theme */
+}
