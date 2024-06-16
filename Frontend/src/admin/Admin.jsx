@@ -30,8 +30,8 @@ import Footer from '../Components/Footer';
 import EventCreationModal from '../Components/EventCreationModal';
 import Carousel from '../Components/Carouj';
 
-const Admin = () => {
 
+const Admin = () => {
     const [data, setData] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -137,7 +137,7 @@ const Admin = () => {
                 const updatedData = data.map(item => item._id === selectedItemId ? response.data : item);
                 setData(updatedData);
                 onClose();
-                fetchData()
+                fetchData();
             })
             .catch(error => {
                 console.error('Error updating event:', error);
@@ -166,13 +166,20 @@ const Admin = () => {
                         bg="white"
                         mb="4"
                     >
-                        <Image
+                        {item.imageUrl?<Image
                             src={item.imageUrl[0]}
                             alt={item.location}
                             borderRadius="lg"
                             height="250px"
                             objectFit="cover"
-                        />
+                        /> :<Image
+                        src={item.title}
+                        alt={item.location}
+                        borderRadius="lg"
+                        height="250px"
+                        objectFit="cover"
+                    /> }
+                         
                         <CardBody>
                             <Stack spacing="0">
                                 <Text fontSize="25" fontWeight="bold" size="md" color="gray.700">
