@@ -52,7 +52,7 @@ const SignUp = async (req, res) => {
 
 const logIn = async (req, res) => {
   const { email, password } = req.body;
-
+ console.log(process.env.SECRET_KEY)
   try {
     const user = await UserModel.findOne({ email });
     if (!user) {
@@ -66,7 +66,7 @@ const logIn = async (req, res) => {
 
     const token = jwt.sign(
       { email, role: user.role, userID: user._id, username: user.username },
-      process.env.SECRET_KEY,
+      process.env.secret_key,
       { expiresIn: "1h" }
     );
 
