@@ -1,33 +1,64 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from '../assets/Logo.jpeg';
-import { Navbar as BootstrapNavbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import logo from '../assets/Logo.jpeg';
+import '../Components/AppH.css';
 
-function AppNavbar() {
+const Header = () => {
     return (
-        <BootstrapNavbar bg="light" expand="lg">
-            <Container fluid>
-                <BootstrapNavbar.Brand href="#" className="ms-5">
-                    <img
-                        src={Logo}
-                        width="70"
-                        height="40"
-                        className="d-inline-block align-top"
-                        alt="Logo"
-                    />
-                </BootstrapNavbar.Brand>
-                <BootstrapNavbar.Toggle aria-controls="navbarNav" />
-                <BootstrapNavbar.Collapse id="navbarNav">
-                    <Nav className="ms-auto me-4">
-                        <Nav.Link className="px-3" href="#">Find Events</Nav.Link>
-                        <Nav.Link className="px-3" href="#">Create Events</Nav.Link>
-                        <Nav.Link className="px-3" href="/auth">Login</Nav.Link>
-                        <Nav.Link className="px-3" href="/auth">Sign Up</Nav.Link>
+        <header className="header-nav">
+            <Navbar collapseOnSelect expand="lg" variant="light" fixed="top" style={{ backgroundColor: '#FFF1ED' }}>
+                <Navbar.Brand className="ml-3">
+                    <img src={logo} className="logo logo-scrolled" alt="Logo" style={{ width: '100px', height: 'auto', marginLeft: '20px' }} />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Nav.Link>Home</Nav.Link>
+                        <Nav.Link href="about-us">About Us</Nav.Link>
+                        <NavDropdown title="What We Do" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#">Exclusive Wedding Deals</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="beach-wedding.php">Beach Wedding</NavDropdown.Item>
+                            <NavDropdown.Item href="royal-wedding.php">Royal Wedding</NavDropdown.Item>
+                            <NavDropdown.Item href="cruise-wedding.php">Cruise Wedding</NavDropdown.Item>
+                            <NavDropdown.Item href="desert-wedding.php">Desert Wedding</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown title="Wedding Services" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="wedding-decor">Wedding Decor</NavDropdown.Item>
+                            <NavDropdown.Item href="wedding-planners">Wedding Planners</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Venue Selection</NavDropdown.Item>
+                            <NavDropdown.Item href="hospitality.php">Hospitality</NavDropdown.Item>
+                            <NavDropdown.Item href="catering-services.php">Catering</NavDropdown.Item>
+                            <NavDropdown.Item href="entertainment">Entertainment </NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link href="corporate-events/">Corporate Events</Nav.Link>
+                        <NavDropdown title="Wedding Destination" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#">Indian</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="destination-wedding-in-agra">Agra</NavDropdown.Item>
+                            <NavDropdown.Item href="destination-wedding-in-ahmedabad">Ahmedabad</NavDropdown.Item>
+                            <NavDropdown.Item href="destination-wedding-in-jaipur">Jaipur</NavDropdown.Item>
+                            <NavDropdown.Item href="destination-wedding-in-goa">Goa</NavDropdown.Item>
+                            <NavDropdown.Item href="#">International</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="international-destination-wedding-in-antalya">Antalya</NavDropdown.Item>
+                            <NavDropdown.Item href="international-destination-wedding-in-australia">Australia</NavDropdown.Item>
+                            <NavDropdown.Item href="international-destination-wedding-in-bali">Bali</NavDropdown.Item>
+                            <NavDropdown.Item href="international-destination-wedding-in-dubai">Dubai</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown title="Memories" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="events_gallery">Events</NavDropdown.Item>
+                            <NavDropdown.Item href="Wedding-new1">Wedding Gallery</NavDropdown.Item>
+                            <NavDropdown.Item href="gallery">Photo Gallery</NavDropdown.Item>
+                            <NavDropdown.Item href="video">Video Gallery</NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link >Blog</Nav.Link>
+                        <Nav.Link href="contact-us">Reach Us</Nav.Link>
                     </Nav>
-                </BootstrapNavbar.Collapse>
-            </Container>
-        </BootstrapNavbar>
+                </Navbar.Collapse>
+            </Navbar>
+        </header>
     );
-}
+};
 
-export default AppNavbar;
+export default Header;
