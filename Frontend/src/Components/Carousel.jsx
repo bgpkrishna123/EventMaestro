@@ -8,7 +8,7 @@ import v3_f3 from '../assets/v3_f3.jpg';
 import slider1 from '../assets/slider1.jpg';
 import './AppCarousel.css';
 
-function AppCarousel() {
+function Carousel() {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex) => {
@@ -64,4 +64,4 @@ function AppCarousel() {
     );
 }
 
-export default AppCarousel;
+export default Carousel;

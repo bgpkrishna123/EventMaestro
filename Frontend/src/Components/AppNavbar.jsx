@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import logo from '../assets/Logo.jpeg';
 import '../Components/AppH.css';
 
-const Header = () => {
+const AppNavbar = () => {
     return (
         <header className="header-nav">
             <Navbar collapseOnSelect expand="lg" variant="light" fixed="top" style={{ backgroundColor: '#FFF1ED' }}>
@@ -61,4 +61,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default AppNavbar;
