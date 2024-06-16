@@ -70,7 +70,7 @@ const logIn = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    return res.status(200).json({ token, role: user.role });
+    return res.status(200).json({ token, role: user.role ,id: user._id});
   } catch (error) {
     console.error(error);
     return res.status(400).json({ msg: "Please provide correct details." });

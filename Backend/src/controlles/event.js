@@ -22,18 +22,29 @@ const getEvents = async (req, res) => {
 
 
 const event = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
     try {
-        const eventData = await EventModel.findById({ eventPlaner: id });
+        const eventData = await EventModel.findOne({ eventPlaner: id });
         if (!eventData) {
             return res.status(404).json({ error: true, message: "Event not found" });
         }
         res.status(200).json({ error: false, eventData });
     } catch (error) {
         console.log(error);
-        res.status(404).json({ error: true, message: error.message });
+        res.status(500).json({ error: true, message: error.message });
     }
 };
+
+
+async function searchEventsByTitle(req, res) {
+    try {
+        const title = req.query.title; 
+        const recipes = await Recipe.find({ title: { $regex: title, $options: "i" } });
+        res.json(recipes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 
 
 const addEvent = async (req, res) => {
@@ -87,4 +98,4 @@ const deleteEvent = async (req, res) => {
 };
 
 
-module.exports = { getEvents,  event, addEvent, updateEvent, deleteEvent };
+module.exports = { getEvents,  event, addEvent, updateEvent, deleteEvent,searchEventsByTitle };
