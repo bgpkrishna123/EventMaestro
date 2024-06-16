@@ -1,67 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import { Carousel } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'animate.css';
+import { Box, Image, Flex, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion"; 
 import v3_f1 from '../assets/v3_f1.jpg';
 import v3_f2 from '../assets/v3_f2.jpg';
 import v3_f3 from '../assets/v3_f3.jpg';
-import slider1 from '../assets/slider1.jpg';
-import './AppCarousel.css';
 
-function AppCarousel() {
-    const [index, setIndex] = useState(0);
+const Carousel = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [v3_f1, v3_f2, v3_f3];
 
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
-    };
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
+    }, 3000);
 
-    return (
-        <Carousel activeIndex={index} onSelect={handleSelect} id="myCarousel">
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={v3_f1}
-                    alt="Best Event Planner in India"
-                />
-                <Carousel.Caption className="col-md-6 col-xs-12 animate__animated animate__bounceInDown animate__delay-2s homepage_bannerfrm">
-                    <h2>Best Event Planner in India</h2>
-                </Carousel.Caption>
-            </Carousel.Item>
+    return () => clearInterval(intervalId);
+  }, [images.length]);
 
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={v3_f2}
-                    alt="Destination Wedding Planner"
-                />
-                <Carousel.Caption className="col-md-6 col-xs-12 animate__animated animate__bounceInLeft animate__delay-2s homepage_bannerfrm">
-                    <h2>Destination Wedding Planner</h2>
-                </Carousel.Caption>
-            </Carousel.Item>
+  return (
+    <Box className="banner" position='relative' overflow='hidden'>
+      <Image
+        src={images[currentImageIndex]}
+        alt={`Image ${currentImageIndex + 1}`}
+        w='100%'
+        maxH='450px'
+        objectFit='cover'
+      />
+      <Box
+        position='absolute'
+        top='50%'
+        left='0'
+        transform='translateY(100%)'
+        zIndex='10' 
+        width='100%' 
+        overflow='hidden' 
+      >
+        <motion.div
+          className="col-md-6 col-xs-12 homepage_bannerfrm"
+          textAlign='center'
+          color='white'
+         
+          initial={{ x: '-100%' }}
+          animate={{ x: '100%', transition: { duration: 4, repeat: Infinity, repeatType: "reverse" } }} 
+        >
+          <Text as="h2" color="white" bg='rgba(0, 0, 0, 0.5)' pt={2} pb={2} textAlign='center'>Best Event Planner in India</Text>
+        </motion.div>
+      </Box>
+      <Flex
+        position='absolute'
+        bottom='10px'
+        left='50%'
+        transform='translateX(-50%)'
+        alignItems='center'
+        zIndex='10' 
+      >
+        {images.map((image, index) => (
+          <Box
+            key={index}
+            w='10px'
+            h='10px'
+            borderRadius='50%'
+            backgroundColor={currentImageIndex === index ? 'pink' : 'lightgray'}
+            margin='0 5px'
+          />
+        ))}
+      </Flex>
+    </Box>
+  );
+};
 
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={v3_f3}
-                    alt=""
-                />
-                {/* <Carousel.Caption className="col-md-6 col-xs-12 animate__animated animate__bounceInDown animate__delay-2s homepage_bannerfrm">
-                    <h2></h2>
-                </Carousel.Caption> */}
-            </Carousel.Item>
-
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={slider1}
-                    alt="Award-Winning Event Organizer"
-                />
-                <Carousel.Caption className="col-md-6 col-xs-12 animate__animated animate__bounceInUp animate__delay-2s homepage_bannerfrm">
-                    <h2>Award-Winning Event Organizer</h2>
-                </Carousel.Caption>
-            </Carousel.Item>
-        </Carousel>
-    );
-}
-
-export default AppCarousel;
+export default Carousel;
