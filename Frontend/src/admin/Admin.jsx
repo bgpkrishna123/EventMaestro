@@ -27,6 +27,8 @@ import {
 import url from '../Components/vars'; // Assuming this contains your API URL
 import AppNavbar from '../Components/AppNavbar';
 import Footer from '../Components/Footer';
+import EventCreationModal from '../Components/EventCreationModal';
+import Carousel from '../Components/Carouj';
 
 const Admin = () => {
 
@@ -52,6 +54,7 @@ const Admin = () => {
             const response = await fetch(`${url}/events`);
             const data = await response.json();
             setData(data.events);
+            console.log(data.events);
          
             
         } catch (err) {
@@ -127,7 +130,9 @@ const Admin = () => {
             <Heading textAlign="center" color="blue" mb="4">
                 Admin Panel
             </Heading>
-            <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button>
+            <Carousel/>
+            {/* <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button> */}
+            <EventCreationModal/>
             <div id='container'>
                 {data.map((item,index) => (
                     <Card
@@ -148,19 +153,19 @@ const Admin = () => {
                             objectFit="cover"
                         />
                         <CardBody>
-                            <Stack spacing="3">
-                                <Text fontWeight="bold" size="md" color="gray.700">
+                            <Stack spacing="0">
+                                <Text fontSize="25" fontWeight="bold" size="md" color="gray.700">
                                     {item.title}
                                 </Text>
-                                <Text color="gray.600">
+                                <Text fontSize="20px" color="gray.600">
                                     {item.description}
                                 </Text>
-                                <Text color="blue.600" fontSize="2xl">
-                                    Price: ${item.Price}
+                                <Text color="blue.600" fontSize="2xl" marginTop="-17px">
+                                    Price: ₹{item.Price}
                                 </Text>
                             </Stack>
                         </CardBody>
-                        <Divider />
+                        <Divider marginTop="-20px" />
                         <CardFooter>
                             <ButtonGroup>
                                 <Button onClick={() => handleOpenUpdateModal(item)}>Update</Button>

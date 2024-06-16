@@ -84,8 +84,9 @@ const EventDetailsPage = () => {
         duration: 3000,
         isClosable: true,
       });
-      navigate("/");
+      navigate("/checkout");
     }
+    
   };
 
   const handleTicketTypeChange = (event) => {

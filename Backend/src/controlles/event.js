@@ -3,18 +3,10 @@ const { UserModel } = require("../models/user.schema");
 
 const getEvents = async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 20;
-
-        const totalCount = await EventModel.countDocuments();
-        const totalPages = Math.ceil(totalCount / limit);
-
-        const skip = (page - 1) * limit;
-        const events = await EventModel.find().skip(skip).limit(limit);
-
-        res.status(200).json({ events, totalPages, currentPage: page, totalCount });
+        const events = await EventModel.find();
+        res.status(200).json({ events });
     } catch (err) {
-        console.error("Error while paginating events:", err);
+        console.error("Error while fetching events:", err);
         res.status(500).json({ error: err.message || "Internal Server Error" });
     }
 };
@@ -39,7 +31,7 @@ const event = async (req, res) => {
 async function searchEventsByTitle(req, res) {
     try {
         const title = req.query.title; 
-        const recipes = await Recipe.find({ title: { $regex: title, $options: "i" } });
+        const recipes = await Recipie.find({ title: { $regex: title, $options: "i" } });
         res.json(recipes);
     } catch (error) {
         res.status(500).json({ message: error.message });
