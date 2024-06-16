@@ -31,7 +31,7 @@ const EventSchema = new mongoose.Schema(
     eventDate: { type: Date, required: true },
     organizer: { type: String , required: true},
     category: { type: String, enum: categoryEnum, required: true },
-    imageUrl: { type: String },
+    imageUrls: { type: [String] },
     eventPlaner:{type:String, required: true},
     time:{type: String},
     mode:{type:String,required:true},

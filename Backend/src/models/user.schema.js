@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
     ref: 'Event', 
     default: [] 
   },
+  tickets: {
+    type: [mongoose.Schema.Types.ObjectId],  
+    ref: 'Event', 
+    default: []     
+  },
   isDisabled: { 
     type: Boolean, 
     default: false 
