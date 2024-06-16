@@ -14,18 +14,21 @@ const getEvents = async (req, res) => {
 
 
 const event = async (req, res) => {
-    const { id } = req.query;
+    const { id } = req.params; 
     try {
-        const eventData = await EventModel.findOne({ eventPlaner: id });
-        if (!eventData) {
-            return res.status(404).json({ error: true, message: "Event not found" });
-        }
-        res.status(200).json({ error: false, eventData });
+      const eventData = await EventModel.find({ eventPlaner: id });
+      if (!eventData.length) { 
+        return res.status(404).json({ error: true, message: "Event not found" });
+      }
+      res.status(200).json({ error: false, eventData });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: true, message: error.message });
+      console.log(error);
+      res.status(500).json({ error: true, message: error.message });
     }
-};
+  };
+  
+  module.exports = { event };
+  
 
 
 async function searchEventsByTitle(req, res) {

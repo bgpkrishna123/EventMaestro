@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,68 +23,68 @@ const ListHeader = ({ children }) => {
 
 const Footer = () => {
     return (
-        <footer style={{ backgroundColor: '#517693', color: 'white' }}>
+        <footer style={{ backgroundColor: '#FFF1ED', color: 'Black' }}>
             <Container className="py-5">
                 <Row>
                     {/* Product */}
                     <Col xs={6} sm={6} md={3}>
                         <ListHeader>Product</ListHeader>
                         <ul className="list-unstyled">
-                            <li><a className="text-white" href="#">Overview</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Overview</a></li>
                             <li>
                                 <div className="d-flex align-items-center">
-                                    <a className="text-white me-2" href="#">Features</a>
+                                    <a style={{ color: 'black' }} className="me-2" href="#">Features</a>
                                     <span className="badge bg-success">New</span>
                                 </div>
                             </li>
-                            <li><a className="text-white" href="#">Tutorials</a></li>
-                            <li><a className="text-white" href="#">Pricing</a></li>
-                            <li><a className="text-white" href="#">Releases</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Tutorials</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Pricing</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Releases</a></li>
                         </ul>
                     </Col>
                     {/* Company */}
                     <Col xs={6} sm={6} md={3}>
                         <ListHeader>Company</ListHeader>
                         <ul className="list-unstyled">
-                            <li><a className="text-white" href="#">About Us</a></li>
-                            <li><a className="text-white" href="#">Press</a></li>
-                            <li><a className="text-white" href="#">Careers</a></li>
-                            <li><a className="text-white" href="#">Contact Us</a></li>
-                            <li><a className="text-white" href="#">Partners</a></li>
+                            <li><a style={{ color: 'black' }} href="#">About Us</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Press</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Careers</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Contact Us</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Partners</a></li>
                         </ul>
                     </Col>
                     {/* Legal */}
                     <Col xs={6} sm={6} md={3}>
                         <ListHeader>Legal</ListHeader>
                         <ul className="list-unstyled">
-                            <li><a className="text-white" href="#">Cookies Policy</a></li>
-                            <li><a className="text-white" href="#">Privacy Policy</a></li>
-                            <li><a className="text-white" href="#">Terms of Service</a></li>
-                            <li><a className="text-white" href="#">Law Enforcement</a></li>
-                            <li><a className="text-white" href="#">Status</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Cookies Policy</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Privacy Policy</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Terms of Service</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Law Enforcement</a></li>
+                            <li><a style={{ color: 'black' }} href="#">Status</a></li>
                         </ul>
                     </Col>
                     {/* Follow Us */}
                     <Col xs={6} sm={6} md={3}>
                         <ListHeader>Follow Us</ListHeader>
                         <div className="d-flex flex-column">
-                            <a className="text-white mb-2 d-flex align-items-center" href="#">
+                            <a style={{ color: 'black' }} className="mb-2 d-flex align-items-center" href="#">
                                 <FontAwesomeIcon icon={faFacebookF} />
                                 <span className="ms-2">Facebook</span>
                             </a>
-                            <a className="text-white mb-2 d-flex align-items-center" href="#">
+                            <a style={{ color: 'black' }} className="mb-2 d-flex align-items-center" href="#">
                                 <FontAwesomeIcon icon={faTwitter} />
                                 <span className="ms-2">Twitter</span>
                             </a>
-                            <a className="text-white mb-2 d-flex align-items-center" href="#">
+                            <a style={{ color: 'black' }} className="mb-2 d-flex align-items-center" href="#">
                                 <FontAwesomeIcon icon={faDribbble} />
                                 <span className="ms-2">Dribbble</span>
                             </a>
-                            <a className="text-white mb-2 d-flex align-items-center" href="#">
+                            <a style={{ color: 'black' }} className="mb-2 d-flex align-items-center" href="#">
                                 <FontAwesomeIcon icon={faInstagram} />
                                 <span className="ms-2">Instagram</span>
                             </a>
-                            <a className="text-white mb-2 d-flex align-items-center" href="#">
+                            <a style={{ color: 'black' }} className="mb-2 d-flex align-items-center" href="#">
                                 <FontAwesomeIcon icon={faLinkedinIn} />
                                 <span className="ms-2">LinkedIn</span>
                             </a>

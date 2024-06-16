@@ -43,7 +43,7 @@ const EventDetailsPage = () => {
     return (
       <>
         <AppNavbar />
-        <Box p={8} bg="gray.100" minHeight="100vh">
+        <Box p={8}mt={8} bg="gray.100" minHeight="100vh">
           <MotionBox
             p={6}
             bg="blue.800"
@@ -78,12 +78,7 @@ const EventDetailsPage = () => {
         isClosable: true,
       });
     } else {
-      toast({
-        title: "Ticket Booked Successfully",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
+     
       navigate("/checkout");
     }
     
