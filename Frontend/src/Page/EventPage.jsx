@@ -78,14 +78,10 @@ const EventDetailsPage = () => {
         isClosable: true,
       });
     } else {
-      toast({
-        title: "Ticket Booked Successfully",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      navigate("/payment");
+     
+      navigate("/checkout");
     }
+    
   };
 
   const handleTicketTypeChange = (event) => {

@@ -8,6 +8,7 @@ import './App.css';
 // import Footer from './Components/Footer';
 // import Carousel from './Components/Carousel';
 import { AllRoutes } from './Routes/AllRoutes';
+// import EventCreationModal from './Components/EventCreationModal';
 
 
 function App() {

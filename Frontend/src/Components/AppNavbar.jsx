@@ -5,9 +5,9 @@ import Logo from '../assets/Logo.jpeg';
 
 function AppNavbar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const token = localStorage.getItem('token');
     return (
-        <Box bg="gray.100" px={4}>
+        <Box bg="gray.100" px={4} position="sticky" top={0} zIndex={10}>
             <Flex h={16} alignItems="center" justifyContent="space-between">
                 <Box ml={5}>
                     <Link href="/">
@@ -38,14 +38,15 @@ function AppNavbar() {
                     display={{ base: 'none', md: 'flex' }}
                     ml={5}
                 >
-                <Link href="#" fontWeight={500}>Events Booked</Link>
-                <Link href="creator" fontWeight={500}>Create Events</Link>
-                <Link href="/auth" fontWeight={500}>Login</Link>
-                <Link href="/auth" fontWeight={500}>Sign Up</Link>
+                    <Link href='/' fontWeight={500}>Home</Link>
+                    <Link href="#" fontWeight={500}>Events Booked</Link>
+                    <Link href="creator" fontWeight={500}>Create Events</Link>
+                    <Link href="/auth" fontWeight={500}>Login</Link>
+                    <Link href="/auth" fontWeight={500}>Sign Up</Link>
                 </HStack>
                 <Flex alignItems="center">
                     <IconButton
-                        size="lg" 
+                        size="lg"
                         icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
                         aria-label="Open Menu"
                         display={{ md: 'none' }}
@@ -57,10 +58,11 @@ function AppNavbar() {
             {isOpen ? (
                 <Box pb={4} display={{ md: 'none' }} fontWeight={800} mt={2}>
                     <Stack as="nav" spacing={4}>
-                    <Link href="#" fontWeight={500}>Events Booked</Link>
-                <Link href="creator" fontWeight={500}>Create Events</Link>
-                <Link href="/auth" fontWeight={500}>Login</Link>
-                <Link href="/auth" fontWeight={500}>Sign Up</Link>
+                        <Link href='/' fontWeight={500}>Home</Link>
+                        <Link href="#" fontWeight={500}>Events Booked</Link>
+                        <Link href="creator" fontWeight={500}>Create Events</Link>
+                        <Link href="/auth" fontWeight={500}>Login</Link>
+                        <Link href="/auth" fontWeight={500}>Sign Up</Link>
                     </Stack>
                 </Box>
             ) : null}

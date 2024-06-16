@@ -1,27 +1,30 @@
 #admin {
     padding: 20px;
-    background: rgb(255,255,255);
-background: linear-gradient(180deg, rgba(255,255,255,1) 5%, rgba(199,33,18,0.30575980392156865) 50%, rgba(26,26,26,1) 97%, rgba(34,56,65,1) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 5%, rgba(199, 33, 18, 0.30575980392156865) 50%, rgba(26, 26, 26, 1) 97%, rgba(34, 56, 65, 1) 100%);
 }
 
 /* For large screens: */
 #container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four columns */
+    grid-template-columns: repeat(4, 1fr);
+    /* Four columns */
     gap: 20px;
 }
 
 /* For medium screens: */
 @media (max-width: 768px) {
     #container {
-        grid-template-columns: repeat(2, 1fr); /* Two columns */
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns */
     }
 }
 
 /* For small screens: */
 @media (max-width: 480px) {
     #container {
-        grid-template-columns: repeat(1, 1fr); /* One column */
+        grid-template-columns: repeat(1, 1fr);
+        /* One column */
     }
 }
 

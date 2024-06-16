@@ -16,7 +16,9 @@ const Container = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${url}/events`);
+        const res=response.json
         setData(response.data.events);
+        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
