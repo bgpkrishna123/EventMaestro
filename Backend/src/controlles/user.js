@@ -52,7 +52,6 @@ const SignUp = async (req, res) => {
 
 const logIn = async (req, res) => {
   const { email, password } = req.body;
- console.log(process.env.SECRET_KEY)
   try {
     const user = await UserModel.findOne({ email });
     if (!user) {
@@ -73,7 +72,7 @@ const logIn = async (req, res) => {
     return res.status(200).json({ token, role: user.role ,id: user._id});
   } catch (error) {
     console.error(error);
-    return res.status(400).json({ msg: "Please provide correct details.",error: error.message});
+    return res.status(400).json({ msg: "Please provide correct details.",error: error});
   }
 };
 
