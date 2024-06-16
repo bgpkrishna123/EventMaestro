@@ -90,7 +90,7 @@ const Admin = () => {
         onOpen();
     };
 
-    // Handle update event
+    
     const handleUpdate = () => {
         const token = localStorage.getItem('token');
         const updatedEvent = {
@@ -122,60 +122,60 @@ const Admin = () => {
 
     return (
         <>
-            <AppNavbar />
-            <div id='admin'>
-                <Heading textAlign="center" color="blue" mb="4">
-                    Admin Panel
-                </Heading>
-                <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button>
-                <div id='container'>
-                    {data.map((item, index) => (
-                        <Card
-                            key={index}
-                            maxW="l"
-                            borderWidth="1px"
+        <AppNavbar/>
+        <div id='admin'>
+            <Heading textAlign="center" color="blue" mb="4">
+                Admin Panel
+            </Heading>
+            <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button>
+            <div id='container'>
+                {data.map((item,index) => (
+                    <Card
+                        key={index}
+                        maxW="l"
+                        borderWidth="1px"
+                        borderRadius="lg"
+                        overflow="hidden"
+                        boxShadow="lg"
+                        bg="white"
+                        mb="4"
+                    >
+                        <Image
+                            src={item.imageUrl[0]}
+                            alt={item.location}
                             borderRadius="lg"
-                            overflow="hidden"
-                            boxShadow="lg"
-                            bg="white"
-                            mb="4"
-                        >
-                            <Image
-                                src={item.imageUrl}
-                                alt={item.location}
-                                borderRadius="lg"
-                                height="250px"
-                                objectFit="cover"
-                            />
-                            <CardBody>
-                                <Stack spacing="3">
-                                    <Text fontWeight="bold" size="md" color="gray.700">
-                                        {item.title}
-                                    </Text>
-                                    <Text color="gray.600">
-                                        {item.description}
-                                    </Text>
-                                    <Text color="blue.600" fontSize="2xl">
-                                        Price: ${item.Price}
-                                    </Text>
-                                </Stack>
-                            </CardBody>
-                            <Divider />
-                            <CardFooter>
-                                <ButtonGroup>
-                                    <Button onClick={() => handleOpenUpdateModal(item)}>Update</Button>
-                                    <Button
-                                        variant="ghost"
-                                        colorScheme="red"
-                                        onClick={() => handleDelete(item._id)}
-                                    >
-                                        Delete
-                                    </Button>
-                                </ButtonGroup>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </div>
+                            height="250px"
+                            objectFit="cover"
+                        />
+                        <CardBody>
+                            <Stack spacing="3">
+                                <Text fontWeight="bold" size="md" color="gray.700">
+                                    {item.title}
+                                </Text>
+                                <Text color="gray.600">
+                                    {item.description}
+                                </Text>
+                                <Text color="blue.600" fontSize="2xl">
+                                    Price: ${item.Price}
+                                </Text>
+                            </Stack>
+                        </CardBody>
+                        <Divider />
+                        <CardFooter>
+                            <ButtonGroup>
+                                <Button onClick={() => handleOpenUpdateModal(item)}>Update</Button>
+                                <Button
+                                    variant="ghost"
+                                    colorScheme="red"
+                                    onClick={() => handleDelete(item._id)}
+                                >
+                                    Delete
+                                </Button>
+                            </ButtonGroup>
+                        </CardFooter>
+                    </Card>
+                ))}
+            </div>
 
                 {/* Modal for updating an event */}
                 <Modal

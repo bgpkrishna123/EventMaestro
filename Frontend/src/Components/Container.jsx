@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Grid, Box, Heading, Image, Text, Button } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import url from "./vars";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+
+const MotionBox = motion(Box);
 
 const Container = () => {
   const [data, setData] = useState([]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +26,7 @@ const Container = () => {
   }, []);
 
   const handleDetails = (item) => {
-    navigate('/eventDetails', { state: { item: item } }); 
+    navigate("/eventDetails", { state: { item: item } });
   };
 
   return (
@@ -38,7 +41,7 @@ const Container = () => {
         gap={8}
       >
         {data.map((item, index) => (
-          <Box
+          <MotionBox
             key={index}
             p={4}
             borderWidth="1px"
@@ -47,9 +50,12 @@ const Container = () => {
             textAlign="center"
             style={{ maxWidth: "100%" }}
             position="relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Image
-              src={item.imageUrl}
+              src={item.imageUrl[0]}
               alt={item.title}
               borderRadius="md"
               mb={4}
@@ -75,7 +81,7 @@ const Container = () => {
                 Details
               </Button>
             </Box>
-          </Box>
+          </MotionBox>
         ))}
       </Grid>
     </Box>
