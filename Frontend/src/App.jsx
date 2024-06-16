@@ -10,11 +10,10 @@ import Carousel from './Components/Carousel';
 import './App.css';
 import { AllRoutes } from './Routes/AllRoutes';
 
+
 function App() {
   return (
-
     <div>
-
       <AppNavbar />
       <Carousel />
       {/* <Login /> */}
@@ -22,6 +21,7 @@ function App() {
       <Footer />
       {/* <AllRoutes /> */}
     </div>
+
   );
 }
 

@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faDribbble, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import logo from '../assets/Logo.jpeg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Logo = () => {
     return (
