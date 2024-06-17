@@ -78,7 +78,7 @@ const EventDetailsPage = () => {
         isClosable: true,
       });
     } else {
-      navigate("/checkout");
+      navigate("/checkout", { state: { title:item.title,imageUrl:item.imageUrl[0],ticketCount : ticketCount,totalPrice:totalPrice } });
     }
   };
 
