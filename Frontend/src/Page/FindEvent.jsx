@@ -10,9 +10,13 @@ import {
   Skeleton,
   SkeletonText,
   HStack,
+  Input,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { SearchIcon } from "@chakra-ui/icons";
 import url from "../Components/vars";
 import AppNavbar from "../Components/AppNavbar";
 
@@ -22,30 +26,40 @@ const FindEvent = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const itemsPerPage = 12;
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/events`);
-        setData(response.data.events);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
+    fetchData(); 
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${url}/events`);
+      setSearchResults(response.data.events);
+      setIsLoading(false); 
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`${url}/events/search?title=${searchQuery}`);
+      setSearchResults(response.data); 
+    } catch (error) {
+      console.error("Error searching events:", error);
+    }
+  };
 
   const handleDetails = (item) => {
     navigate("/eventDetails", { state: { item: item } });
   };
 
   const handleNextPage = () => {
-    if (currentPage * itemsPerPage < data.length) {
+    if (currentPage * itemsPerPage < searchResults.length) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -57,7 +71,15 @@ const FindEvent = () => {
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
+  const paginatedData = searchResults.slice(startIndex, startIndex + itemsPerPage);
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchButtonClick = () => {
+    handleSearch();
+  };
 
   return (
     <>
@@ -66,6 +88,24 @@ const FindEvent = () => {
         <Heading as="h1" mb={8} textAlign="center">
           Explore and Book Events
         </Heading>
+        <Box display="flex" justifyContent="center" mb={4}>
+          <InputGroup width="50%">
+            <Input
+              placeholder="Search events by title..."
+              value={searchQuery}
+              onChange={handleInputChange}
+            />
+            <InputRightElement>
+              <Button
+                bg="transparent"
+                onClick={handleSearchButtonClick}
+                _hover={{ bg: "transparent" }}
+              >
+                <SearchIcon />
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+        </Box>
         <Grid
           templateColumns={{
             base: "repeat(1, 1fr)",
@@ -144,8 +184,8 @@ const FindEvent = () => {
           </Button>
           <Button
             onClick={handleNextPage}
-            disabled={currentPage * itemsPerPage >= data.length}
-            style={{ opacity: currentPage * itemsPerPage >= data.length ? 0 : 1 }}
+            disabled={currentPage * itemsPerPage >= searchResults.length}
+            style={{ opacity: currentPage * itemsPerPage >= searchResults.length ? 0 : 1 }}
           >
             Next
           </Button>
