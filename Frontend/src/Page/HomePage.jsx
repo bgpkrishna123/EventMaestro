@@ -7,6 +7,7 @@ import WelcomeSection from "../Components/WelcomeSection";
 import Carousel from "../Components/Carousel";
 import AppNavbar from "../Components/AppNavbar";
 import Container from "../Components/Container";
+import PhotoGallery from "../Components/PhotoGallery";
 
 const HomePage = () => {
   return (
@@ -18,10 +19,8 @@ const HomePage = () => {
       <InternationalWeddingPlanner />
       <Container />
       <VideosSection />
-
-
-
-      {/* <Footer /> */}
+      <PhotoGallery />
+      <Footer />
     </>
   );
 };
