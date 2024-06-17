@@ -119,23 +119,22 @@ const Login = () => {
 
   return (
     <>
-    <AppNavbar/>
-    <Flex minH="100vh" align="center" justify="center" flexDirection={{ base: 'column', md: 'row' }}pl={10}>
-      {isLoginForm && 
-      <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h="90vH" pl={10}>
-      <Image
-        src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
-        alt="Background"
-        objectFit="cover"
-        w="100%"
-        h="90%"
-        borderRadius="50%"
-      />
-    </Box>
-      }
-      
-      <Box flex={{ base: 'none', md: '0 0 60%' }} w="100%"  pl={10} pr={80}>
-      <Text as="h1" fontSize="3xl" mb={6} textAlign="center" >
+    <Flex minH="100vh" align="center" justify="center" flexDirection={{ base: 'column', md: 'row' }} pl={{ base: 0, md: 10 }}>
+      {isLoginForm && (
+        <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h={{ base: 'auto', md: '90vh' }} pl={{ base: 0, md: 10 }}>
+          <Image
+            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+            alt="Background"
+            objectFit="cover"
+            w="100%"
+            h="100%"
+            borderRadius="50%"
+          />
+        </Box>
+      )}
+
+      <Box flex={{ base: 'none', md: '0 0 60%' }} w="100%" pl={{ base: 0, md: 10 }} pr={{ base: 0, md: 80 }}>
+        <Text as="h1" fontSize="3xl" mb={6} textAlign="center">
           Welcome to Event-Maestro
         </Text>
         <Text fontSize="2xl" mb={4}>
@@ -199,7 +198,7 @@ const Login = () => {
                   required
                 />
               </FormControl>
-              <Button type="submit" colorScheme="blue" mb={4} >
+              <Button type="submit" colorScheme="blue" mb={4}>
                 {isLoginForm ? 'Login' : 'Signup'}
               </Button>
               <Flex justify="space-between">
@@ -241,21 +240,21 @@ const Login = () => {
           )}
         </form>
       </Box>
-      {!isLoginForm && 
-      <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h="90vH"ml={-60} pr={10}>
-      <Image
-        src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
-        alt="Background"
-        objectFit="cover"
-        w="100%"
-        h="90%"
-        borderRadius="50%"
-      />
-    </Box>
-      }
+
+      {!isLoginForm && (
+        <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h={{ base: 'auto', md: '90vh' }} ml={{ base: -60, md: 0 }} pr={10}>
+          <Image
+            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
+            alt="Background"
+            objectFit="cover"
+            w="100%"
+            h="100%"
+            borderRadius="50%"
+          />
+        </Box>
+      )}
     </Flex>
-    <Footer/>
-    </>
+  </>
   );
 };
 
