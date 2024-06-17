@@ -72,7 +72,7 @@ const updateEvent = async (req, res) => {
         res.status(200).json({ success: true, event: updatedEvent });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+        res.status(500).json({ success: false, message: "Internal Server Error" ,error: error });
     }
 };
 
@@ -113,7 +113,7 @@ const deleteEvent = async (req, res) => {
         res.status(200).json({ success: true, message: "Event deleted successfully" });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+        res.status(500).json({ success: false, message: "Internal Server Error",error: error });
     }
 };
 
