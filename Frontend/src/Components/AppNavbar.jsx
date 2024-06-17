@@ -25,6 +25,7 @@ function AppNavbar({ data, setData }) {
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
+    handleSearch();
     const token = localStorage.getItem('token');
     if (token) {
       setLogin(true);
