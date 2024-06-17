@@ -1,24 +1,21 @@
 /* InternationalWeddingPlanner.css */
 
-/* .induse-sec {
-    padding: 50px 0;
-} */
-
 .induse-sec-lft .globe-img {
     position: relative;
     text-align: center;
     margin-left: 10px;
 }
 
-#circle{
+.induse-sec-lft .globe-img .image {
 margin-left: 25px;
 }
+
  .induse-sec-lft .globe-img .image {
     width: 90%;
     height: auto;
     border-radius: 15px;
     display: block;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     margin-right: 50px;
     -webkit-animation: spin 30s linear infinite; 
     -moz-animation: spin 30s linear infinite; 
@@ -57,32 +54,36 @@ margin-left: 25px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(254, 174, 163, 1.0); 
+    background: rgba(254, 174, 163, 1.0);
     padding: 20px;
     border-radius: 50%;
     color: black;
     text-align: center;
-    width: 200px; 
-    height: 200px; 
+    width: 185px;
+    height: 185px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
 }
 
 .induse-sec-lft .globe-info p,
-.induse-sec-lft .globe-info h2 {
+.induse-sec-lft .globe-info h2{
     margin: 0;
-    font-size: 14px; 
-    line-height: 1.2; 
+    font-size: 10px;
+    line-height: 1.0;
+    color: white;
 }
 
 .induse-sec-lft .globe-info h2 {
-    font-size: 16px; 
+    /* font-size: 18px; */
     margin: 5px 0;
-    font-weight: bold;
-    color: #feaea3;
+    /* font-weight: bold; */
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 43px;
 }
 
 .induse-sec-rgt .indus-brief h2 {
@@ -116,21 +117,21 @@ margin-left: 25px;
 }
 
 /* .img-icon styles */
-/* .img-icon {
-    width: 100px;
-    height: 100px;
+.img-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
     border-radius: 50%;
     border: 1px solid #FEAEA3;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
-    position: relative;
-} */
+}
 
 .img-icon img {
-    max-width: 80%;
-    max-height: 80%;
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
 }
 
@@ -140,56 +141,36 @@ margin-left: 25px;
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    color: #FEAEA3; /* Color set to #FEAEA3 */
+    color: #FEAEA3;
     font-size: 12px;
     text-align: center;
     width: 100%;
 }
 
-/* .confetti-button {
-    display: inline-block;
-    width: calc(33.333% - 10px);
-    margin: 5px;
-} */
-.induse-sec {
-  padding: 20px;
-}
-
-.image {
-  width: 100%;
-  height: auto;
-  border-radius: 50%; /* Applies circular border radius */
-  display: block; /* Ensures the image is displayed as a block element */
-}
-
-.globe-info {
-  text-align: left;
-}
-
-.img-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
-  border-radius: 50%; /* Applies circular border radius */
-}
-
+/* .confetti-button styles */
 .confetti-button {
-  width: calc(100% / 6); /* Each button takes 1/6th of the container width */
-  padding: 10px;
-  text-align: center;
-  box-sizing: border-box; /* Ensure padding is included in the width */
-  display: inline-block; /* Ensure inline block layout */
-  margin-bottom: 20px; /* Optional: Adds space between buttons */
+    width: calc(100% / 6);
+    padding: 10px;
+    text-align: left; 
+    display: inline-flex; 
+    align-items: center; 
+    margin-bottom: 20px;
 }
 
 .confetti-button a {
-  display: block;
-  text-decoration: none;
+    display: flex; 
+    align-items: center; 
+    text-decoration: none;
 }
 
-.confetti-button .img-icon {
-  width: 50px;
-  height: 50px;
-  margin: 0 auto 5px; /* Adjust margin as needed */
-  border-radius: 50%; /* Applies circular border radius */
+/* .confetti-container styles */
+.confetti-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+    gap: 10px; 
+}
+
+.induse-sec {
+    padding: 20px;
 }

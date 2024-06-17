@@ -5,6 +5,7 @@
 
 .ulockd-main-title {
     margin-bottom: 30px;
+    text-align: center; 
 }
 
 .ulockd-main-title h2 {
@@ -15,7 +16,7 @@
 
 .ulockd-main-title img {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; 
 }
 
 .gallery-thumb {
@@ -46,6 +47,6 @@
     transition: background-color 0.3s ease;
 }
 
-.button :hover{
+.button:hover {
     background-color: #cd887f;
 }
