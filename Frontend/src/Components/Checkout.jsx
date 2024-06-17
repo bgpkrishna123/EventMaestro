@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Image, Badge, Box } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import "../Styles/Checkout.css";
+import "../styles/Checkout.css";
 // import axios from "axios";
 
 const data = {

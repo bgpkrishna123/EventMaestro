@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../Styles/Payment.css';
+import '../styles/Payment.css';
 import chip from "../assets/chip.png";
 import visa from "../assets/visa.png";
 import { useToast } from '@chakra-ui/react';
