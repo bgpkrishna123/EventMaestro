@@ -27,7 +27,23 @@ const event = async (req, res) => {
     }
   };
   
-  module.exports = { event };
+  
+
+  const getBookedEvent = async (req, res) => {
+    const id  =  req.user.userID ;
+    try {
+      const events = await EventModel.find({ eventBooked: id });
+      if (!events) { 
+        return res.status(404).json({ error: true, message: "You have not Booked any event yet" });
+      }
+      res.status(200).json({ error: false, events });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: true, message: error.message });
+    }
+  };
+  
+
   
 
 
@@ -101,6 +117,10 @@ const bookTicket = async (req, res) => {
     }
 };
 
+
+
+
+
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
 
@@ -118,4 +138,4 @@ const deleteEvent = async (req, res) => {
 };
 
 
-module.exports = { getEvents,  event, addEvent,bookTicket, updateEvent, deleteEvent,searchEventsByTitle };
+module.exports = { getEvents,  event, addEvent,bookTicket,getBookedEvent, updateEvent, deleteEvent,searchEventsByTitle };
