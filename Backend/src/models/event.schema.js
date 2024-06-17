@@ -1,28 +1,6 @@
 const mongoose = require("mongoose");
 
-const categoryEnum = [
-  "Music",
-  "Tech",
-  "Workshop",
-  "Sports",
-  "Photography",
-  "Food",
-  "Art",
-  "Expo",
-  "Fashion",
-  "Education",
-  "Health",
-  "Business",
-  "Science",
-  "Travel",
-  "Entertainment",
-  "Fitness",
-  "Culture",
-  "Environment",
-  "Politics",
-  "Religion",
-  "History",
-];
+
 
 const EventSchema = new mongoose.Schema(
   {
@@ -30,15 +8,16 @@ const EventSchema = new mongoose.Schema(
     description: { type: String, required: true },
     eventDate: { type: Date, required: true },
     organizer: { type: String , required: true},
-    category: { type: String, enum: categoryEnum, required: true },
-    imageUrls: { type: [String] },
+    category: { type: String, required: true },
+    imageUrl: { type: [String] },
     eventPlaner:{type:String, required: true},
+    eventBooked: { type: [String]},
     time:{type: String},
     mode:{type:String,required:true},
     Price:{type:Number,required:true},
     location: { type: String, required: true },
     ticketTypes: {
-    type: [{ type: String, enum:  ["Gold", "Silver", "Bronze"] }],
+    type: [{ type: String }],
       default: function () {
           return ["Bronze"];
       }

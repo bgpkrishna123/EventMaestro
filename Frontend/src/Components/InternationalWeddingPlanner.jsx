@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './InternationalWeddingPlanner.css'; // Ensure this is your CSS file path
+import '../Styles/InternationalWeddingPlanner.css'; // Ensure this is your CSS file path
 import globeImage from '../assets/globe-1.jpg'; // Adjust the path as necessary
 import markerIcon from '../assets/marker.png';
 import waiterIcon from '../assets/waiter.png';

@@ -1,16 +1,36 @@
-import React from 'react'
-import AppNavbar from '../Components/AppNavbar'
-import Footer from '../Components/Footer'
-import Container from '../Components/Container'
+import React from "react";
+import Footer from "../Components/Footer";
+import VideosSection from "../Components/VideoSection";
+import InternationalWeddingPlanner from "../Components/InternationalWeddingPlanner";
+import EventManagementSection from "../Components/Middle";
+import WelcomeSection from "../Components/WelcomeSection";
+import Carousel from "../Components/Carousel";
+import AppNavbar from "../Components/AppNavbar";
+import Container from "../Components/Container";
+
+
+
+
+
+
 
 const HomePage = () => {
   return (
     <>
-    <AppNavbar/>
-    <Container/>
-    <Footer/>
-    </>
-  )
-}
+      <AppNavbar />
+      <Carousel />
+      <WelcomeSection />
+      <EventManagementSection />
 
-export default HomePage
+      <InternationalWeddingPlanner />
+      <Container />
+      <VideosSection />
+
+
+
+      <Footer />
+    </>
+  );
+};
+
+export default HomePage;

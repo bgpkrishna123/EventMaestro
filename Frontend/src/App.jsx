@@ -1,7 +1,7 @@
 
 import React from 'react';
-import AppNavbar from './Components/AppNavbar';
-import Login from './Page/Login';
+// import AppNavbar from './Components/AppNavbar';
+// import Login from './Page/Login';
 import './App.css';
 // import { Footer } from 'react-bootstrap/lib/Modal';
 import WelcomeSection from './Components/WelcomeSection';
@@ -15,18 +15,17 @@ import VideosSection from './Components/VideoSection';
 
 function App() {
   return (
-    <div>
-      <AppNavbar />
+    <>
+      {/* <AppNavbar />
       <Carousel />
-      {/* <Login /> */}
       <WelcomeSection />
       <Middle />
       <InternationalWeddingPlanner />
       <VideosSection />
-      <Footer />
-      {/* <AllRoutes /> */}
+      <Footer /> */}
+      <AllRoutes />
 
-    </div>
+    </>
 
   );
 }

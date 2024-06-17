@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Components/Middle.css';
+import '../Styles/Middle.css';
 import corporateImage from '../assets/corporate.png';
 import seminarImage from '../assets/seminar.png';
 import brandImage from '../assets/brand.png';
