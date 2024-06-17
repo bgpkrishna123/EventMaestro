@@ -27,7 +27,6 @@ function App() {
 
                     {/* First row */}
                     <div className="row">
-                        {/* Column 1 */}
                         <div className="col-xxs-12 col-xs-6 col-sm-6 col-md-3 ulockd-pad395">
                             <div className="about-box2 text-center wow fadeInUp" data-wow-duration="1s">
                                 <div className="ab-thumb">
