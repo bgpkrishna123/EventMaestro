@@ -34,7 +34,7 @@ const event = async (req, res) => {
 async function searchEventsByTitle(req, res) {
     try {
         const title = req.query.title; 
-        const recipes = await Recipie.find({ title: { $regex: title, $options: "i" } });
+        const recipes = await EventModel.find({ title: { $regex: title, $options: "i" } });
         res.json(recipes);
     } catch (error) {
         res.status(500).json({ message: error.message });
