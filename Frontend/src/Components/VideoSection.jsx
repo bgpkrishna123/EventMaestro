@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import titleIcon from '../assets/title-icon.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Styles/VideosSection.css';
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import titleIcon from "../assets/title-icon.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../Styles/VideosSection.css";
 
 const VideosSection = () => {
     return (
@@ -11,7 +11,11 @@ const VideosSection = () => {
                 <Row>
                     <Col md={{ span: 6, offset: 3 }} className="text-center">
                         <div className="ulockd-main-title">
-                            <h2><span className="text-thm2">Some Spectacular Videos</span></h2>
+                            <h2>
+                                <span className="text-thm2" style={{ color: "#FEAEA3" }}>
+                                    Some Spectacular Videos
+                                </span>
+                            </h2>
                             <img src={titleIcon} alt="title-bottom.png" />
                         </div>
                     </Col>
@@ -22,11 +26,12 @@ const VideosSection = () => {
                             <iframe
                                 width="100%"
                                 height="220"
-                                src="https://www.youtube.com/embed/b3WuU-ME118"
+                                src="https://www.youtube.com/embed/b3WuU-ME118?si=GovGSqSrT10Jkv5G"
                                 title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
                             ></iframe>
                         </div>
                     </Col>
@@ -35,11 +40,12 @@ const VideosSection = () => {
                             <iframe
                                 width="100%"
                                 height="220"
-                                src="https://youtu.be/NBRp2xY3EP4?si=WbOk4h3W3MtjURp3"
+                                src="https://www.youtube.com/embed/JtFGwpFwv9c?si=Fj-z9P3SAwittHkZ"
                                 title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
                             ></iframe>
                         </div>
                     </Col>
@@ -48,11 +54,12 @@ const VideosSection = () => {
                             <iframe
                                 width="100%"
                                 height="220"
-                                src="https://www.youtube.com/embed/v4HFFfsO4u4"
+                                src="https://www.youtube.com/embed/v4HFFfsO4u4?si=nQ-n3ui4WxUDsYNX"
                                 title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
                             ></iframe>
                         </div>
                     </Col>
@@ -61,18 +68,19 @@ const VideosSection = () => {
                             <iframe
                                 width="100%"
                                 height="220"
-                                src="https://www.youtube.chttps://youtu.be/NBRp2xY3EP4?si=687NGf9OQITAXoCJ"
+                                src="https://www.youtube.com/embed/_Z4UqvicMa4?si=tybbckvDXnE5UqKM"
                                 title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
                             ></iframe>
                         </div>
                     </Col>
                 </Row>
             </Container>
             <div className="video_more">
-                <a href="https://www.v3events.in/video" className="button">View More</a>
+                <a className="button">View More</a>
             </div>
         </section>
     );

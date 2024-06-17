@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './FloatingContactForm.css'; // Import your CSS file for styling if needed
+import './Styles/FloatingContactForm.css';
 
 const FloatingContactForm = () => {
     const [showForm, setShowForm] = useState(false);
@@ -10,9 +10,7 @@ const FloatingContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
         console.log('Form submitted');
-        // Optionally, reset form fields or close the form after submission
         setShowForm(false);
     };
 

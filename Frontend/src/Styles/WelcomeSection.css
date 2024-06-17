@@ -8,13 +8,18 @@
     color: #feaea3;
     font-weight: bold;
 }
+.con-title h2 {
+    /* color: #feaea3; */
+    font-weight: bold;
+    margin-left: 200px;
+}
 .con-title h5  {
     margin-top: 20px;
-    margin-left: 160px;
+    margin-left: 120px;
 }
 .con-title img  {
     margin-top: 20px;
-    margin-left: 550px;
+    margin-left: 450px;
 }
 
 .ulockd-ffact-one {

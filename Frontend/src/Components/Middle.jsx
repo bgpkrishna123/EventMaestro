@@ -78,7 +78,7 @@ const EventManagementSection = () => {
                     <div className="col-md-12 text-center">
                         <div className="ulockd-main-title">
                             <h2><span className="text-thm2">Event Management Services</span></h2>
-                            <img src={titleIcon} alt="V3 Events Service" />
+                            <img src={titleIcon} alt="" />
                         </div>
                     </div>
                 </div>

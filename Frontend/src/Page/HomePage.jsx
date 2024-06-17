@@ -8,12 +8,6 @@ import Carousel from "../Components/Carousel";
 import AppNavbar from "../Components/AppNavbar";
 import Container from "../Components/Container";
 
-
-
-
-
-
-
 const HomePage = () => {
   return (
     <>
@@ -21,14 +15,13 @@ const HomePage = () => {
       <Carousel />
       <WelcomeSection />
       <EventManagementSection />
-
       <InternationalWeddingPlanner />
       <Container />
       <VideosSection />
 
 
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
