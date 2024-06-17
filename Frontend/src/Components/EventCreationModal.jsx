@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import url from './vars';
 
-const EventCreationModal = () => {
+const EventCreationModal = ({fetchData}) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [formData, setFormData] = useState({
         Price: 50,
@@ -68,6 +68,7 @@ const EventCreationModal = () => {
         //   console.log(response.data);
           // Reset form data or show success message
           onClose();
+          fetchData();
         } catch (error) {
           console.error('Error creating event:', error);
           // Show error message

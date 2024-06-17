@@ -11,6 +11,7 @@ const EventSchema = new mongoose.Schema(
     category: { type: String, required: true },
     imageUrl: { type: [String] },
     eventPlaner:{type:String, required: true},
+    eventBooked: { type: [String]},
     time:{type: String},
     mode:{type:String,required:true},
     Price:{type:Number,required:true},
