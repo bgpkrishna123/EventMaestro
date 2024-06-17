@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Flex, HStack, Link, Image, IconButton, useDisclosure, Stack, Input, InputGroup, InputRightElement, Button } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, SearchIcon } from '@chakra-ui/icons';
 import Logo from '../assets/Logo.jpeg';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 
 function AppNavbar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -71,3 +72,4 @@ function AppNavbar() {
 }
 
 export default AppNavbar;
+

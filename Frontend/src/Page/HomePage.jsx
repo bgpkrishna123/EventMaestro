@@ -1,11 +1,14 @@
 import React from "react";
-
 import Footer from "../Components/Footer";
+import VideosSection from "../Components/VideoSection";
+import InternationalWeddingPlanner from "../Components/InternationalWeddingPlanner";
+import EventManagementSection from "../Components/Middle";
+import WelcomeSection from "../Components/WelcomeSection";
+import Carousel from "../Components/Carousel";
+import AppNavbar from "../Components/AppNavbar";
 import Container from "../Components/Container";
 
-import AppNavbar from "../Components/AppNavbar";
-import Carousel from "../Components/Carousel";
-import WelcomeSection from "../Components/WelcomeSection";
+
 
 
 
@@ -15,9 +18,16 @@ const HomePage = () => {
   return (
     <>
       <AppNavbar />
-      <Carousel/>
-      <WelcomeSection/>
+      <Carousel />
+      <WelcomeSection />
+      <EventManagementSection />
+
+      <InternationalWeddingPlanner />
       <Container />
+      <VideosSection />
+
+
+
       <Footer />
     </>
   );
