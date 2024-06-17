@@ -14,8 +14,10 @@ import {
     Textarea,
     Select,
     Flex,
+    Text,
 } from '@chakra-ui/react';
 import url from './vars';
+import { m } from 'framer-motion';
 
 const EventCreationModal = ({ fetchData }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -79,11 +81,11 @@ const EventCreationModal = ({ fetchData }) => {
     return (
         <>
             <Flex>
-                <h1>
+                <Text as="h3" mt={6}>
                     Create your Events in One Click...
-                </h1>
+                </Text>
                 <Button ml={20} onClick={onOpen} mb="4" colorScheme="blue" marginTop="20px">
-                  Create
+                    Create
                 </Button>
             </Flex>
             <Modal isOpen={isOpen} onClose={onClose}>

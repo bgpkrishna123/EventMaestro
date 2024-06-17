@@ -8,18 +8,14 @@ const VideosSection = () => {
     return (
         <section className="ulockd-blog new-ulockd_bgnew">
             <Container>
-                <Row>
-                    <Col md={{ span: 6, offset: 3 }} className="text-center">
+                <div className="row justify-content-center">
+                    <div className="col-md-12 text-center">
                         <div className="ulockd-main-title">
-                            <h2>
-                                <span className="text-thm2" style={{ color: "#FEAEA3" }}>
-                                    Some Spectacular Videos
-                                </span>
-                            </h2>
-                            <img src={titleIcon} alt="title-bottom.png" />
+                            <h2><span className="text-thm2" style={{ color: '#FEAEA3' }}>Some Spectacular Videos</span></h2>
+                            <img src={titleIcon} alt="" />
                         </div>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
                 <Row>
                     <Col xs={12} sm={6} md={3}>
                         <div className="gallery-thumb">
