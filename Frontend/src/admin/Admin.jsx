@@ -29,9 +29,11 @@ import AppNavbar from '../Components/AppNavbar';
 import Footer from '../Components/Footer';
 import EventCreationModal from '../Components/EventCreationModal';
 import Carousel from '../Components/Carouj';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const Admin = () => {
+    const navigate=useNavigate();
     const [data, setData] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -44,8 +46,14 @@ const Admin = () => {
     const finalRef = useRef(null);
     const [selectedItemId, setSelectedItemId] = useState(null); // State to store the ID of the selected item for update
 
+    
+    const userdetail=localStorage.getItem("userDetails");
+    const user1 = JSON.parse(userdetail).role;
+    console.log(user1);
+
     useEffect(() => {
         fetchData();
+        
     }, []);
 
     // Fetch events data from the API
@@ -76,7 +84,7 @@ const Admin = () => {
         try {
             const response = await axios.get(`${url}/events/planner/${id}`);
             setData(response.data.eventData); 
-            console.log(response.data.eventData);
+            
         } catch (err) {
             console.error('Fetch error:', err);
         }
@@ -142,10 +150,25 @@ const Admin = () => {
             .catch(error => {
                 console.error('Error updating event:', error);
             });
+
+            
     };
 
+    const toast=()=>{
+        toast({
+            title: 'Please Login!! ☹',
+            description: "Please login to create events",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+          });
+          navigate("/auth");
+    }
+
     return (
+        
         <>
+       
         <AppNavbar/>
         <div id='admin'>
             <Heading textAlign="center" color="blue" mb="4">
