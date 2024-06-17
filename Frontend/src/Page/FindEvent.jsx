@@ -64,7 +64,7 @@ const FindEvent = () => {
       <AppNavbar />
       <Box p={8}>
         <Heading as="h1" mb={8} textAlign="center">
-          Event Tickets
+          Explore and Book Events
         </Heading>
         <Grid
           templateColumns={{
