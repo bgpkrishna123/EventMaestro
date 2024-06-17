@@ -40,7 +40,7 @@ const Container = ({ data, setData }) => {
         gap={8}
       >
         {isLoading
-          ? Array.from({ length: 9 }).map((_, index) => (
+          ? Array.from({ length: 8 }).map((_, index) => (
               <Box
                 key={index}
                 p={4}
@@ -52,7 +52,7 @@ const Container = ({ data, setData }) => {
                 <SkeletonText noOfLines={4} spacing="4" />
               </Box>
             ))
-          : data.map((item, index) => (
+          : data.slice(0, 8).map((item, index) => ( 
               <MotionBox
                 key={index}
                 p={4}

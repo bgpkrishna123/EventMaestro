@@ -99,9 +99,7 @@ function AppNavbar({ data, setData }) {
           </Link>
           {login ? (
             <>
-              <Link href="/profile" fontWeight={500}>
-                Profile
-              </Link>
+             
               <Link onClick={handleLogout} fontWeight={500}>
                 Logout
               </Link>
@@ -142,9 +140,7 @@ function AppNavbar({ data, setData }) {
             </Link>
             {login ? (
               <>
-                <Link href="/profile" fontWeight={500}>
-                  Profile
-                </Link>
+                
                 <Link onClick={handleLogout} fontWeight={500}>
                   Logout
                 </Link>

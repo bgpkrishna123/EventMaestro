@@ -86,7 +86,7 @@ function Payment() {
       }, 500);
 
       setTimeout(() => {
-        console.log("homepage")
+        navigate("/")
       }, 4000);
     }
   };
@@ -116,13 +116,13 @@ function Payment() {
     } catch (error) {
       console.error("Error while booking ticket:", error);
 
-      toast({
-        title: 'Error booking ticket',
-        description: error.message,
-        status: 'error',
-        duration: 2000,
-        isClosable: true,
-      });
+      // toast({
+      //   title: 'Error booking ticket',
+      //   description: error.message,
+      //   status: 'error',
+      //   duration: 2000,
+      //   isClosable: true,
+      // });
     }
   };
   return (
