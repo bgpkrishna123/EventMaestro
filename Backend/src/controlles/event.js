@@ -17,8 +17,8 @@ const event = async (req, res) => {
     const { id } = req.params; 
     try {
       const eventData = await EventModel.find({ eventPlaner: id });
-      if (!eventData.length) { 
-        return res.status(404).json({ error: true, message: "Event not found" });
+      if (!eventData) { 
+        return res.status(404).json({ error: true, message: "You have not creted any event yet" });
       }
       res.status(200).json({ error: false, eventData });
     } catch (error) {
@@ -34,7 +34,7 @@ const event = async (req, res) => {
 async function searchEventsByTitle(req, res) {
     try {
         const title = req.query.title; 
-        const recipes = await Recipie.find({ title: { $regex: title, $options: "i" } });
+        const recipes = await EventModel.find({ title: { $regex: title, $options: "i" } });
         res.json(recipes);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -76,6 +76,31 @@ const updateEvent = async (req, res) => {
     }
 };
 
+
+const bookTicket = async (req, res) => {
+    const { id } = req.params;
+    const userId = req.user.userID;
+
+    try {
+        const event = await EventModel.findById({_id: id});
+        if (!event) {
+            return res.status(404).json({ success: false, message: "Event not found" });
+        }
+        if (event.eventBooked.includes(userId)) {
+            return res.status(400).json({ success: false, message: "You have already booked this ticket" });
+        }
+        
+        await UserModel.findByIdAndUpdate(userId, { $push: { tickets: id } }, { new: true });
+
+        await EventModel.findByIdAndUpdate(id, { $push: { eventBooked: userId } }, { new: true });
+
+        res.status(200).json({ success: true, message: "Ticket booked successfully" });
+    } catch (error) {
+        console.error("Error while booking ticket:", error);
+        res.status(500).json({ success: false,  error: error });
+    }
+};
+
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
 
@@ -93,4 +118,4 @@ const deleteEvent = async (req, res) => {
 };
 
 
-module.exports = { getEvents,  event, addEvent, updateEvent, deleteEvent,searchEventsByTitle };
+module.exports = { getEvents,  event, addEvent,bookTicket, updateEvent, deleteEvent,searchEventsByTitle };

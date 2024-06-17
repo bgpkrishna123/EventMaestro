@@ -153,7 +153,7 @@ const Admin = () => {
             </Heading>
             <Carousel/>
             {/* <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button> */}
-            <EventCreationModal/>
+            <EventCreationModal fetchData = {fetchData} />
             <div id='container'>
                 {data? data.map((item,index) => (
                     <Card
