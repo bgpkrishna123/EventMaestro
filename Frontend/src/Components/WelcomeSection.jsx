@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import titleIcon from '../assets/title-icon.png';
-import './WelcomeSection.css';
+import '../Styles/WelcomeSection.css';
 
 const WelcomeSection = () => {
     return (

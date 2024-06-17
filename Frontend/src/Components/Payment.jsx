@@ -4,6 +4,8 @@ import '../styles/Payment.css';
 import chip from "../assets/chip.png";
 import visa from "../assets/visa.png";
 import { useToast } from '@chakra-ui/react';
+import url from "./vars";
+import axios from "axios";
 
 function Payment() {
   const toast = useToast();
@@ -84,11 +86,45 @@ function Payment() {
       }, 500);
 
       setTimeout(() => {
-        navigate("/");
+        console.log("homepage")
       }, 4000);
     }
   };
 
+  const bookTicket = async () => {
+    try {
+      const user = localStorage.getItem("userDetails");
+      const token = JSON.parse(user).token;
+
+      const response = await axios.post(`${url}/bookTicket/666fd2fc54cca7920d257330`, null, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+
+      const result = response.data;
+      console.log(result);
+
+      toast({
+        title: 'Ticket booked successfully!',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      });
+
+    } catch (error) {
+      console.error("Error while booking ticket:", error);
+
+      toast({
+        title: 'Error booking ticket',
+        description: error.message,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
   return (
     <div className="payemnt-container">
       <div className="container">
@@ -199,7 +235,7 @@ function Payment() {
               />
             </div>
           </div>
-          <input type="submit" value="submit" className="submit-btn" />
+          <input type="submit" value="submit" className="submit-btn" onClick={bookTicket} />
         </form>
       </div>
     </div>
