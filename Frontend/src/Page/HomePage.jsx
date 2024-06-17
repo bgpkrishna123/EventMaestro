@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../Components/Footer";
-//import VideosSection from "../Components/VideoSection";
+import VideosSection from "../Components/VideoSection";
 import InternationalWeddingPlanner from "../Components/InternationalWeddingPlanner";
 import EventManagementSection from "../Components/Middle";
 import WelcomeSection from "../Components/WelcomeSection";
@@ -20,7 +20,7 @@ const HomePage = () => {
       <EventManagementSection />
       <InternationalWeddingPlanner />
       <Container data = {data} setData={setData}/>
-      {/* <VideosSection /> */}
+      <VideosSection />
       <Footer />
     </>
   );
