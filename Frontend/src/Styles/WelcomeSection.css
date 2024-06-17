@@ -9,13 +9,22 @@
     font-weight: bold;
 }
 .con-title h2 {
-    /* color: #feaea3; */
     font-weight: bold;
-    margin-left: 200px;
+    font-size: x-large;
+    margin-left: 75px;
+    margin-top: 10px;
+    display: inline-block; 
+    white-space: nowrap; 
 }
+
+.con-title h2 span {
+    display: inline; 
+    /* margin-left: 10px;  */
+}
+
 .con-title h5  {
     margin-top: 20px;
-    margin-left: 120px;
+    margin-left: 100px;
 }
 .con-title img  {
     margin-top: 20px;

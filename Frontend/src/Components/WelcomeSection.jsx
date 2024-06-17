@@ -8,13 +8,14 @@ const WelcomeSection = () => {
         <section>
             <Container>
                 <Row>
-                    <div className="con-title">
+                    <div class="con-title">
                         <h2>
                             Welcome to Event Maestro <span>-Best Wedding & Event Management Company</span>
                         </h2>
                         <h5>Event Maestro -Award Winning Wedding Planners & Event Management Company</h5>
                         <img src={titleIcon} alt="Best Event Management Company" />
                     </div>
+
                 </Row>
                 <Row className="ulockd-mrgn1225">
                     <Col xs={6} sm={6} md={3}>
