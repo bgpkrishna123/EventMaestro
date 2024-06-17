@@ -8,19 +8,16 @@ import Carousel from "../Components/Carousel";
 import AppNavbar from "../Components/AppNavbar";
 import Container from "../Components/Container";
 
-
-
 const HomePage = () => {
   const [data, setData] = useState([]);
   return (
     <>
-      <AppNavbar data = {data} setData={setData}/>
+      <AppNavbar data={data} setData={setData} />
       <Carousel />
       <WelcomeSection />
       <EventManagementSection />
-
       <InternationalWeddingPlanner />
-      <Container data = {data} setData={setData}/>
+      <Container data={data} setData={setData} />
       <VideosSection />
       <Footer />
     </>

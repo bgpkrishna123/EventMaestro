@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Styles/InternationalWeddingPlanner.css'; // Ensure this is your CSS file path
-import globeImage from '../assets/globe-1.jpg'; // Adjust the path as necessary
+import '../Styles/InternationalWeddingPlanner.css';
+import globeImage from '../assets/globe-1.jpg';
 import markerIcon from '../assets/marker.png';
 import waiterIcon from '../assets/waiter.png';
 import dishIcon from '../assets/dish.png';
@@ -12,48 +12,19 @@ import musicalNoteIcon from '../assets/musical-note.png';
 import coupleIcon from '../assets/couple.png';
 import singerIcon from '../assets/singer.png';
 import airplaneIcon from '../assets/airplane.png';
+import { color } from 'framer-motion';
 
 const services = [
-    {
-        icon: markerIcon,
-        title: "Destination Wedding",
-    },
-    {
-        icon: waiterIcon,
-        title: "Corporate Event",
-    },
-    {
-        icon: dishIcon,
-        title: "Catering",
-    },
-    {
-        icon: videoCameraIcon,
-        title: "Entertainment",
-    },
-    {
-        icon: photoCameraIcon,
-        title: "Wedding Photographers",
-    },
-    {
-        icon: hospitalityIcon,
-        title: "Hospitality",
-    },
-    {
-        icon: musicalNoteIcon,
-        title: "Artist",
-    },
-    {
-        icon: coupleIcon,
-        title: "Wedding Planning",
-    },
-    {
-        icon: singerIcon,
-        title: "Bollywood Singers",
-    },
-    {
-        icon: airplaneIcon,
-        title: "Luxury Wedding",
-    }
+    { icon: markerIcon, title: "Destination Wedding" },
+    { icon: waiterIcon, title: "Corporate Event" },
+    { icon: dishIcon, title: "Catering" },
+    { icon: videoCameraIcon, title: "Entertainment" },
+    { icon: photoCameraIcon, title: "Wedding Photographers" },
+    { icon: hospitalityIcon, title: "Hospitality" },
+    { icon: musicalNoteIcon, title: "Artist" },
+    { icon: coupleIcon, title: "Wedding Planning" },
+    { icon: singerIcon, title: "Bollywood Singers" },
+    { icon: airplaneIcon, title: "Luxury Wedding" }
 ];
 
 const InternationalWeddingPlanner = () => {
@@ -68,10 +39,12 @@ const InternationalWeddingPlanner = () => {
                                     <img className="image" id="circle" src={globeImage} alt="Globe" />
                                     <div className="globe-info">
                                         <p>International Wedding Planner</p>
+
                                         <h2>Events Maestro</h2>
+
                                         <p>
                                             <span>Thailand | Dubai| Malaysia <br />
-                                                Bali | Turkey | Kathmandu | Baku</span>
+                                                Bali | Turkey | Kathmandu </span>
                                         </p>
                                     </div>
                                 </div>
@@ -87,10 +60,10 @@ const InternationalWeddingPlanner = () => {
                                     {services.map((service, index) => (
                                         <div key={index} className="confetti-button">
                                             <a href={service.href} className="d-block text-center">
-                                                <div className="img-icon" >
-                                                    <img src={service.icon} alt={service.title} className="img-icon" />
+                                                <div className="img-icon">
+                                                    <img src={service.icon} alt={service.title} className="img-icon-img" />
                                                 </div>
-                                                <span>{service.title}</span>
+                                                <span style={{ color: '#FEAEA3' }}>{service.title}</span>
                                             </a>
                                         </div>
                                     ))}
@@ -100,7 +73,7 @@ const InternationalWeddingPlanner = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 

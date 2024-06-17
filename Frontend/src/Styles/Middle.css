@@ -24,12 +24,12 @@
 }
 
 .ulockd-main-title .text-thm2 {
-    color: black; /* Example color */
+    color: black; 
 }
 
 .ulockd-main-title img {
     margin-top: 20px;
-    margin-left: 500px;
+    /* margin-left: 400px; */
 }
 
 /* Service Box Styles */
@@ -58,14 +58,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70px; /* Added: Set the width of the square */
-    height: 70px; /* Added: Set the height of the square */
+    width: 70px; 
+    height: 70px; 
 }
 
 .about-box2 .ab-thumb img {
     width: 60px;
     height: 60px;
-    object-fit: contain; /* Added: Ensures the image fits within the container */
+    object-fit: contain; 
 }
 
 .about-box2 .ab-details h3 {
