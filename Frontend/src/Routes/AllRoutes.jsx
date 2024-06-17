@@ -12,6 +12,7 @@ import Payment from "../Components/Payment";
 
 export const AllRoutes = () => {
  
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
