@@ -5,12 +5,13 @@ import Login from './Page/Login';
 import './App.css';
 // import { Footer } from 'react-bootstrap/lib/Modal';
 import WelcomeSection from './Components/WelcomeSection';
-import aa from './Components/aa'
 import Footer from './Components/Footer';
 import Carousel from './Components/Carousel';
 import './App.css';
 import { AllRoutes } from './Routes/AllRoutes';
-
+import Middle from './Components/Middle';
+import InternationalWeddingPlanner from './Components/InternationalWeddingPlanner';
+import VideosSection from './Components/VideoSection';
 
 function App() {
   return (
@@ -19,9 +20,12 @@ function App() {
       <Carousel />
       {/* <Login /> */}
       <WelcomeSection />
-      {/* <aa /> */}
+      <Middle />
+      <InternationalWeddingPlanner />
+      <VideosSection />
       <Footer />
       {/* <AllRoutes /> */}
+
     </div>
 
   );
