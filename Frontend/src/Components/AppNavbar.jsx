@@ -36,6 +36,7 @@ function AppNavbar({ data, setData }) {
   const handleSearch = async () => {
     try {
       const response = await axios.get(`${url}/events/search?title=${searchQuery}`);
+      console.log(response.data);
       setData(response.data);
       setSearchResults(response.data); 
     } catch (error) {
@@ -48,12 +49,11 @@ function AppNavbar({ data, setData }) {
   };
 
   const handleLogout = () => {
-    // Clear all local storage data
+    
     localStorage.clear();
-    // Update login state to false
+    
     setLogin(false);
-    // Optionally redirect to login page or any other action
-    // Example: history.push('/auth');
+    
   };
 
   return (
