@@ -7,6 +7,11 @@ import EventPage from "../Page/EventPage";
 import { Checkout } from "../Components/Checkout";
 
 import Payment from "../Components/Payment";
+import FindEvent from "../Page/FindEvent";
+import BookedEvents from "../Components/BookedEvents";
+
+
+
 
 
 
@@ -20,6 +25,8 @@ export const AllRoutes = () => {
       <Route path="/creator" element={<Category/>} />
       <Route path="/eventDetails" element={<EventPage/>} />
       <Route path="/checkout" element={<Checkout/>} />
+      <Route path="/findEvents" element={<FindEvent/>} />
+      <Route path="/bookedEvents" element={<BookedEvents/>} />
       
 
       <Route path="/payment" element={<Payment/>} />

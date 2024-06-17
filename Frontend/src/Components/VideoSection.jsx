@@ -2,10 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import titleIcon from "../assets/title-icon.png";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import titleIcon from '../assets/title-icon.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "../Styles/VideosSection.css";
 
 const VideosSection = () => {

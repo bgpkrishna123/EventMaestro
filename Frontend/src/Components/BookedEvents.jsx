@@ -7,52 +7,69 @@ import {
   Image,
   Text,
   Button,
-  Skeleton,
-  SkeletonText,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import url from "../Components/vars";
+import AppNavbar from "../Components/AppNavbar";
+import Footer from "./Footer";
 
 const MotionBox = motion(Box);
 
-const Container = ({ data, setData }) => {
-  const [isLoading, setIsLoading] = useState(true);
+const BookedEvents = () => {
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect to update isLoading based on data changes
   useEffect(() => {
-    setIsLoading(data.length === 0); // Set isLoading to true if data is empty
-  }, [data]);
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const token = localStorage.getItem("token");
+  
+    if (!token) {
+      console.error("User not logged in");
+      return;
+    }
+  
+    try {
+      const response = await axios.get(`${url}/events/getEventsBooked`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setData(response.data.events);
+    } catch (err) {
+      console.error('Fetch error:', err);
+    }
+  };
 
   const handleDetails = (item) => {
     navigate("/eventDetails", { state: { item: item } });
   };
 
   return (
-    <Box p={8}>
-      <Grid
-        templateColumns={{
-          base: "repeat(1, 1fr)",
-          md: "repeat(2, 1fr)",
-          lg: "repeat(3, 1fr)",
-          xl: "repeat(4, 1fr)",
-        }}
-        gap={8}
-      >
-        {isLoading
-          ? Array.from({ length: 9 }).map((_, index) => (
-              <Box
-                key={index}
-                p={4}
-                borderWidth="1px"
-                borderRadius="md"
-                className="shadow-lg"
-              >
-                <Skeleton height="200px" borderRadius="md" mb={4} />
-                <SkeletonText noOfLines={4} spacing="4" />
-              </Box>
-            ))
-          : data.map((item, index) => (
+    <>
+      <AppNavbar />
+      <Box p={8}>
+        <Heading as="h1" size="2xl" textAlign="center" mb={8}>
+          Event Tickets
+        </Heading>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+            xl: "repeat(4, 1fr)",
+          }}
+          gap={8}
+        >
+          {data.length === 0 ? (
+            <Box w="100%" textAlign="center">
+              <Text fontSize="2xl" fontWeight="bold">No Ticket Found</Text>
+            </Box>
+          ) : (
+            data.map((item, index) => (
               <MotionBox
                 key={index}
                 p={4}
@@ -94,10 +111,13 @@ const Container = ({ data, setData }) => {
                   </Button>
                 </Box>
               </MotionBox>
-            ))}
-      </Grid>
-    </Box>
+            ))
+          )}
+        </Grid>
+      </Box>
+      <Footer />
+    </>
   );
 };
 
-export default Container;
+export default BookedEvents;

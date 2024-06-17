@@ -198,7 +198,9 @@ const Login = () => {
                   required
                 />
               </FormControl>
-              <Button type="submit" colorScheme="blue" mb={4}>
+              <Button type="submit" bg="#FEAEA3"
+                    color="white"
+                    _hover={{ bg: "#A0522D" }} mb={4}>
                 {isLoginForm ? 'Login' : 'Signup'}
               </Button>
               <Flex justify="space-between">
@@ -232,10 +234,12 @@ const Login = () => {
                   required
                 />
               </FormControl>
-              <Button type="submit" colorScheme="blue" mb={4} onClick={handleForgotPassword}>
+              <Button type="submit" bg="#FEAEA3"
+                    color="white"
+                    _hover={{ bg: "#A0522D" }} mb={4} mr={4} onClick={handleForgotPassword}>
                 Reset Password
               </Button>
-              <Link onClick={() => setIsForgetPassword(!isForgetPassword)}>Back to Login</Link>
+              <Link onClick={() => setIsForgetPassword(!isForgetPassword)} fontWeight={"bold"}>Back to Login</Link>
             </>
           )}
         </form>

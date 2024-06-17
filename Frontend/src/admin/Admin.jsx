@@ -47,28 +47,12 @@ const Admin = () => {
     const [selectedItemId, setSelectedItemId] = useState(null); // State to store the ID of the selected item for update
 
     
-    const userdetail=localStorage.getItem("userDetails");
-    const user1 = JSON.parse(userdetail).role;
-    console.log(user1);
+
 
     useEffect(() => {
         fetchData();
         
     }, []);
-
-    // Fetch events data from the API
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await fetch(`${url}/events`);
-    //         const data = await response.json();
-    //         setData(data.events);
-    //         console.log(data.events);
-         
-            
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
 
     const fetchData = async () => {
         const user = localStorage.getItem("userDetails");
