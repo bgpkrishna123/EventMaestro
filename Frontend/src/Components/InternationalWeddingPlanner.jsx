@@ -34,9 +34,9 @@ const InternationalWeddingPlanner = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-12 col-md-12 col-lg-5">
-                            <div className="induse-sec-lft">
-                                <div className="globe-img">
-                                    <img className="image" src={globeImage} alt="Globe" />
+                            <div className="induse-sec-lft" >
+                                <div className="globe-img" >
+                                    <img className="image" id="circle" src={globeImage} alt="Globe" />
                                     <div className="globe-info">
                                         <p>International Wedding Planner</p>
 

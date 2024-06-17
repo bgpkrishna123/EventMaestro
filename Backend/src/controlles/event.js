@@ -27,7 +27,23 @@ const event = async (req, res) => {
     }
   };
   
-  module.exports = { event };
+  
+
+  const getBookedEvent = async (req, res) => {
+    const id  =  req.user.userID ;
+    try {
+      const events = await EventModel.find({ eventBooked: id });
+      if (!events) { 
+        return res.status(404).json({ error: true, message: "You have not Booked any event yet" });
+      }
+      res.status(200).json({ error: false, events });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: true, message: error.message });
+    }
+  };
+  
+
   
 
 
@@ -72,7 +88,7 @@ const updateEvent = async (req, res) => {
         res.status(200).json({ success: true, event: updatedEvent });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+        res.status(500).json({ success: false, message: "Internal Server Error" ,error: error });
     }
 };
 
@@ -101,6 +117,10 @@ const bookTicket = async (req, res) => {
     }
 };
 
+
+
+
+
 const deleteEvent = async (req, res) => {
     const { id } = req.params;
 
@@ -113,9 +133,9 @@ const deleteEvent = async (req, res) => {
         res.status(200).json({ success: true, message: "Event deleted successfully" });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+        res.status(500).json({ success: false, message: "Internal Server Error",error: error });
     }
 };
 
 
-module.exports = { getEvents,  event, addEvent,bookTicket, updateEvent, deleteEvent,searchEventsByTitle };
+module.exports = { getEvents,  event, addEvent,bookTicket,getBookedEvent, updateEvent, deleteEvent,searchEventsByTitle };

@@ -7,6 +7,10 @@
 }
 
 .induse-sec-lft .globe-img .image {
+margin-left: 25px;
+}
+
+ .induse-sec-lft .globe-img .image {
     width: 90%;
     height: auto;
     border-radius: 15px;

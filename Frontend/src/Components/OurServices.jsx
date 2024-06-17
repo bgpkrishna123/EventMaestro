@@ -11,7 +11,7 @@ import garlandsIcon from "../assets/garlands.png";
 import curtainsIcon from "../assets/curtains.png";
 import balloonsIcon from "../assets/balloons.png";
 
-function App() {
+function OurServices() {
     return (
         <div className="App">
             <section className="ulockd-service bgc-overlay-white8 ulockd_bgp3">
@@ -145,4 +145,4 @@ function App() {
     );
 }
 
-export default App;
+export default OurServices;

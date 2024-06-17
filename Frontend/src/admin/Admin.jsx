@@ -29,9 +29,11 @@ import AppNavbar from '../Components/AppNavbar';
 import Footer from '../Components/Footer';
 import EventCreationModal from '../Components/EventCreationModal';
 import Carousel from '../Components/Carouj';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const Admin = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -44,44 +46,34 @@ const Admin = () => {
     const finalRef = useRef(null);
     const [selectedItemId, setSelectedItemId] = useState(null); // State to store the ID of the selected item for update
 
+
+
+
     useEffect(() => {
         fetchData();
-    }, []);
 
-    // Fetch events data from the API
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await fetch(`${url}/events`);
-    //         const data = await response.json();
-    //         setData(data.events);
-    //         console.log(data.events);
-         
-            
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+    }, []);
 
     const fetchData = async () => {
         const user = localStorage.getItem("userDetails");
-    
+
         if (!user) {
             console.error("User details not found in localStorage");
             return;
         }
-    
-        const userDetails = JSON.parse(user); 
-        const id = userDetails.id; 
-    
+
+        const userDetails = JSON.parse(user);
+        const id = userDetails.id;
+
         try {
             const response = await axios.get(`${url}/events/planner/${id}`);
-            setData(response.data.eventData); 
-            console.log(response.data.eventData);
+            setData(response.data.eventData);
+
         } catch (err) {
             console.error('Fetch error:', err);
         }
     };
-    
+
 
     // Handle event deletion
     const handleDelete = (id) => {
@@ -114,7 +106,7 @@ const Admin = () => {
         onOpen();
     };
 
-    
+
     const handleUpdate = () => {
         const token = localStorage.getItem('token');
         const updatedEvent = {
@@ -142,73 +134,88 @@ const Admin = () => {
             .catch(error => {
                 console.error('Error updating event:', error);
             });
+
+
     };
 
+    const toast = () => {
+        toast({
+            title: 'Please Login!! ☹',
+            description: "Please login to create events",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+        });
+        navigate("/auth");
+    }
+
     return (
+
         <>
-        <AppNavbar/>
-        <div id='admin'>
-            <Heading textAlign="center" color="blue" mb="4">
-                Admin Panel
-            </Heading>
-            <Carousel/>
-            {/* <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button> */}
-            <EventCreationModal fetchData = {fetchData} />
-            <div id='container'>
-                {data? data.map((item,index) => (
-                    <Card
-                        key={index}
-                        maxW="l"
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        overflow="hidden"
-                        boxShadow="lg"
-                        bg="white"
-                        mb="4"
-                    >
-                        {item.imageUrl?<Image
-                            src={item.imageUrl[0]}
-                            alt={item.location}
+
+            <AppNavbar />
+            <div id='admin'>
+                <Heading textAlign="center" color="black" mb="4">
+                    Create Your Events
+                </Heading>
+                {/* <Carousel /> */}
+                {/* <Button onClick={onOpen} mb="4" colorScheme="blue">Create</Button> */}
+                <EventCreationModal fetchData={fetchData} />
+                <div id='container'>
+                    {data ? data.map((item, index) => (
+                        <Card
+                            key={index}
+                            maxW="l"
+                            borderWidth="1px"
                             borderRadius="lg"
-                            height="250px"
-                            objectFit="cover"
-                        /> :<Image
-                        src={item.title}
-                        alt={item.location}
-                        borderRadius="lg"
-                        height="250px"
-                        objectFit="cover"
-                    /> }
-                         
-                        <CardBody>
-                            <Stack spacing="0">
-                                <Text fontSize="25" fontWeight="bold" size="md" color="gray.700">
-                                    {item.title}
-                                </Text>
-                                <Text fontSize="20px" color="gray.600">
-                                    {item.description}
-                                </Text>
-                                <Text color="blue.600" fontSize="2xl" marginTop="-17px">
-                                    Price: ₹{item.Price}
-                                </Text>
-                            </Stack>
-                        </CardBody>
-                        <Divider marginTop="-20px" />
-                        <CardFooter>
-                            <ButtonGroup>
-                                <Button onClick={() => handleOpenUpdateModal(item)}>Update</Button>
-                                <Button
-                                    variant="ghost"
-                                    colorScheme="red"
-                                    onClick={() => handleDelete(item._id)}
-                                >
-                                    Delete
-                                </Button>
-                            </ButtonGroup>
-                        </CardFooter>
-                    </Card>
-                )): <h1>No events have been created yet.</h1>}
-            </div>
+                            overflow="hidden"
+                            boxShadow="lg"
+                            bg="white"
+                            mb="4"
+                        >
+                            {item.imageUrl ? <Image
+                                src={item.imageUrl[0]}
+                                alt={item.location}
+                                borderRadius="lg"
+                                height="250px"
+                                objectFit="cover"
+                            /> : <Image
+                                src={item.title}
+                                alt={item.location}
+                                borderRadius="lg"
+                                height="250px"
+                                objectFit="cover"
+                            />}
+
+                            <CardBody>
+                                <Stack spacing="0">
+                                    <Text fontSize="25" fontWeight="bold" size="md" color="gray.700">
+                                        {item.title}
+                                    </Text>
+                                    <Text fontSize="20px" color="gray.600">
+                                        {item.description}
+                                    </Text>
+                                    <Text color="blue.600" fontSize="2xl" marginTop="-17px">
+                                        Price: ₹{item.Price}
+                                    </Text>
+                                </Stack>
+                            </CardBody>
+                            <Divider marginTop="-20px" />
+                            <CardFooter>
+                                <ButtonGroup>
+                                    <Button onClick={() => handleOpenUpdateModal(item)}>Update</Button>
+                                    <Button
+                                        variant="ghost"
+                                        colorScheme="red"
+                                        onClick={() => handleDelete(item._id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                </ButtonGroup>
+                            </CardFooter>
+                        </Card>
+                    )) : <h1>No events have been created yet.</h1>}
+                </div>
 
                 {/* Modal for updating an event */}
                 <Modal

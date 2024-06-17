@@ -43,7 +43,7 @@ const EventDetailsPage = () => {
     return (
       <>
         <AppNavbar />
-        <Box p={8}mt={8} bg="gray.100" minHeight="100vh">
+        <Box p={8} mt={8} bg="gray.100" minHeight="100vh">
           <MotionBox
             p={6}
             bg="blue.800"
@@ -78,10 +78,8 @@ const EventDetailsPage = () => {
         isClosable: true,
       });
     } else {
-     
       navigate("/checkout");
     }
-    
   };
 
   const handleTicketTypeChange = (event) => {
@@ -136,7 +134,7 @@ const EventDetailsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Heading as="h1" size="lg" mb={4} color="blue.300">
+          <Heading as="h1" size="lg" mb={4} color="#FEAEA3">
             {item.title}
           </Heading>
           <Image
@@ -147,7 +145,7 @@ const EventDetailsPage = () => {
             boxShadow="lg"
             w="100%"
           />
-          <Text fontSize="xl" mb={6} color="gray.200">
+          <Text as="h1" fontSize="xl" mb={6} color="gray.200">
             {item.description}
           </Text>
 
@@ -218,9 +216,9 @@ const EventDetailsPage = () => {
             <HStack spacing={4} alignItems="center" mb={4} ml={2}>
               <Button
                 onClick={handleDecrement}
-                bg="blue.400"
-                color="white"
-                _hover={{ bg: "blue.500" }}
+                bg="#FEAEA3"
+            color="white"
+            _hover={{ bg: "#A0522D" }}
                 opacity={ticketCount === 1 ? 0 : 1}
                 disabled={ticketCount <= 1}
               >
@@ -232,9 +230,9 @@ const EventDetailsPage = () => {
               </Text>
               <Button
                 onClick={handleIncrement}
-                bg="blue.400"
+                bg="#FEAEA3"
                 color="white"
-                _hover={{ bg: "blue.500" }}
+                _hover={{ bg: "#A0522D" }}
                 opacity={ticketCount === 5 ? 0 : 1}
                 disabled={ticketCount >= 5}
               >
@@ -244,9 +242,9 @@ const EventDetailsPage = () => {
           </Flex>
 
           <Button
-            bg="blue.400"
+            bg="#FEAEA3"
             color="white"
-            _hover={{ bg: "blue.500" }}
+            _hover={{ bg: "#A0522D" }}
             onClick={handleBookTicket}
             mb={4}
             disabled={!selectedTicketType}

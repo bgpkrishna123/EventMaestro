@@ -13,23 +13,26 @@ import {
     Input,
     Textarea,
     Select,
+    Flex,
+    Text,
 } from '@chakra-ui/react';
 import url from './vars';
+import { m } from 'framer-motion';
 
-const EventCreationModal = ({fetchData}) => {
+const EventCreationModal = ({ fetchData }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [formData, setFormData] = useState({
         Price: 50,
-        category: 'Music',
-        description: 'Join us for a weekend of music, food, and fun!',
-        eventDate: '2024-08-10T18:00:00.000Z',
+        category: '',
+        description: '',
+        eventDate: '',
         imageUrl: [],
-        location: 'Central Park, New York',
+        location: '',
         mode: 'Offline',
-        organizer: 'planner',
+
         ticketTypes: ['Gold', 'Silver', 'Bronze'],
-        time: '18:00 - 23:00',
-        title: 'Summer Music Festival',
+        time: '',
+        title: '',
     });
 
     const handleChange = (e) => {
@@ -59,28 +62,32 @@ const EventCreationModal = ({fetchData}) => {
         e.preventDefault();
         // console.log(formData);
         try {
-          const token = localStorage.getItem('token');
-          const response = await axios.post(`${url}/events/`, formData, {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
-          });
-        //   console.log(response.data);
-          // Reset form data or show success message
-          onClose();
-          fetchData();
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`${url}/events/`, formData, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            //   console.log(response.data);
+            // Reset form data or show success message
+            onClose();
+            fetchData();
         } catch (error) {
-          console.error('Error creating event:', error);
-          // Show error message
+            console.error('Error creating event:', error);
+            // Show error message
         }
     };
 
     return (
         <>
-            <Button onClick={onOpen} mb="4" colorScheme="blue" marginTop="20px">
-                Create
-            </Button>
-
+            <Flex>
+                <Text as="h3" mt={6}>
+                    Create your Events in One Click...
+                </Text>
+                <Button ml={20} onClick={onOpen} mb="4" colorScheme="blue" marginTop="20px">
+                    Create
+                </Button>
+            </Flex>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -121,7 +128,7 @@ const EventCreationModal = ({fetchData}) => {
                         <Input
                             type="text"
                             name="eventDate"
-                            placeholder="Event Date"
+                            placeholder="yyyy-mm-dd"
                             value={formData.eventDate}
                             onChange={handleChange}
                             mb={4}
@@ -158,14 +165,7 @@ const EventCreationModal = ({fetchData}) => {
                             <option value="Offline">Offline</option>
                             <option value="Online">Online</option>
                         </Select>
-                        <Input
-                            type="text"
-                            name="organizer"
-                            placeholder="Organizer"
-                            value={formData.organizer}
-                            onChange={handleChange}
-                            mb={4}
-                        />
+
                         <Input
                             type="text"
                             name="ticketTypes"
