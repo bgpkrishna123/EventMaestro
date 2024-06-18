@@ -7,7 +7,7 @@ The Event Maestro website is a comprehensive platform that simplifies event plan
 Fullstack (MERN)
 
 ## Deployed App:-
-Frontend:  https://event-maestro-u3xq.vercel.app/  </br>
+Frontend:  https://event-maestro.vercel.app/ </br>
 Backend:  https://eventmaestro.onrender.com
 
 ## Directory Structure
@@ -30,6 +30,7 @@ Attach a concise video walkthrough of all of the features [ 1 - 3 minutes ]
 - CRUD Operations
 - Search property using search param
 - Private routes
+- Admin functionality
 
 ## Design decisions or assumptions
 The development focused on creating an intuitive and secure platform that emphasizes community building among food enthusiasts. Assumptions include a high engagement rate based on quality content and user-friendly features.
@@ -103,13 +104,14 @@ Password: planner
 ```
 normal user:
 Email:user@gmail.com
-pass:user;
+Password: user;
 
 
 ## API Endpoints
 The deployed server can be used to fetch and sort any data. Further, it can be used to log in and register a user.
 
 - API : https://eventmaestro.onrender.com
+
 - GET /posts - retrieve all items
 - POST /posts - create a new item
 - PATCH /posts/:id - Patch an item
@@ -123,7 +125,7 @@ The deployed server can be used to fetch and sort any data. Further, it can be u
 
 List and provide a brief overview of the technologies used in the project.
 
-- Frontend: React.js, Chakara UI, BootStrap , Axios
+- Frontend: React.js, Chakara UI, BootStrap, Axios
 - Backend: Node.js, Express.js
 - Database: MongoDB
 - Other: Mongoose, JWT
