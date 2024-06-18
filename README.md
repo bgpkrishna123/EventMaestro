@@ -7,7 +7,7 @@ The Event Maestro website is a comprehensive platform that simplifies event plan
 Fullstack (MERN)
 
 ## Deployed App:-
-Frontend:  https://event-maestro.vercel.app/ </br>
+Frontend: https://event-maestro-jfkz.vercel.app/ </br>
 Backend:  https://eventmaestro.onrender.com
 
 ## EventMaestro Directory Structure
