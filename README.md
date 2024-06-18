@@ -142,7 +142,7 @@ Backend:  https://eventmaestro.onrender.com
 
 
 ## Video Walkthrough of the project
-link:
+link:  https://youtu.be/fdQI8QDk6uc?si=C-Qlhjc5CGJs-7Ap
 
 ## Features
 - Responsive and dynamic website
@@ -219,13 +219,16 @@ npm run start
 ## Credentials
 
 To be able to access the Admin Dashboard, enter these credentials in the Login Page :
+
 ```bash
 UserId : planner@gmail.com
 Password: planner
 ```
-normal user:
+Normal user:
+```bash
 Email:user@gmail.com
-Password: user;
+Password: user
+```
 
 
 ## API Endpoints
