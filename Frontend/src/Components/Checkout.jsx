@@ -108,7 +108,7 @@ export function Checkout() {
           </div>
           <div className="price-details">
             <p className="gray">Total Tickets</p>
-            <p className="payday">{dataa.ticketCount} day</p>
+            <p className="payday">{dataa.ticketCount} Ticket</p>
           </div>
           <div className="price-details">
             <p className="gray">Parking charges</p>
