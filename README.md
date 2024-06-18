@@ -10,9 +10,7 @@ Fullstack (MERN)
 Frontend:  https://event-maestro.vercel.app/ </br>
 Backend:  https://eventmaestro.onrender.com
 
-## Directory Structure
-
-# EventMaestro Directory Structure
+## EventMaestro Directory Structure
 
 **├── Backend/**<br>
 │   ├── .env<br>
@@ -144,7 +142,7 @@ Backend:  https://eventmaestro.onrender.com
 
 
 ## Video Walkthrough of the project
-Attach a concise video walkthrough of all of the features [ 1 - 3 minutes ]
+link:
 
 ## Features
 - Responsive and dynamic website
@@ -214,7 +212,7 @@ cd backend/
 npm install
 
 # Run the server
-npm run server
+npm run start
 
 ```
 
