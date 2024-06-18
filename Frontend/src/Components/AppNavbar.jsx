@@ -12,8 +12,9 @@ import {
   InputGroup,
   InputRightElement,
   Button,
+  useToast,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, SearchIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, SearchIcon, StarIcon } from '@chakra-ui/icons';
 import Logo from '../assets/Logo.jpeg';
 import axios from 'axios';
 import url from './vars';
@@ -23,6 +24,8 @@ function AppNavbar({ data, setData }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [login, setLogin] = useState(false);
+  const [role, setRole] = useState(null);
+  const toast = useToast();
 
   useEffect(() => {
     handleSearch();
@@ -32,14 +35,19 @@ function AppNavbar({ data, setData }) {
     } else {
       setLogin(false);
     }
-  }, []); 
+    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+    if (userDetails && userDetails.role) {
+      setRole(userDetails.role);
+      console.log(userDetails.role);
+    }
+  }, []);
 
   const handleSearch = async () => {
     try {
       const response = await axios.get(`${url}/events/search?title=${searchQuery}`);
       console.log(response.data);
       setData(response.data);
-      setSearchResults(response.data); 
+      setSearchResults(response.data);
     } catch (error) {
       console.error('Error searching events:', error);
     }
@@ -50,11 +58,21 @@ function AppNavbar({ data, setData }) {
   };
 
   const handleLogout = () => {
-    
     localStorage.clear();
-    
     setLogin(false);
-    
+  };
+
+  const handleCreateEvent = (e) => {
+    if (role !== 'eventPlanner' && role !== 'admin') {
+      e.preventDefault();
+      toast({
+        title: 'Access Denied',
+        description: 'Only planners can create events.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -89,17 +107,16 @@ function AppNavbar({ data, setData }) {
             Home
           </Link>
           <Link href="/findEvents" fontWeight={500}>
-              Find Events
-            </Link>
-            <Link href="/bookedEvents" fontWeight={500}>
-           Booked Events
+            Find Events
           </Link>
-          <Link href="creator" fontWeight={500}>
+          <Link href="/bookedEvents" fontWeight={500}>
+            Booked Events
+          </Link>
+          <Link href="/creator" fontWeight={500} onClick={handleCreateEvent}>
             Create Events
           </Link>
           {login ? (
             <>
-             
               <Link onClick={handleLogout} fontWeight={500}>
                 Logout
               </Link>
@@ -114,6 +131,7 @@ function AppNavbar({ data, setData }) {
               </Link>
             </>
           )}
+          {role === 'eventPlanner' && <StarIcon />}
         </HStack>
         <Flex alignItems="center">
           <IconButton
@@ -135,12 +153,11 @@ function AppNavbar({ data, setData }) {
             <Link href="/findEvents" fontWeight={500}>
               Find Events
             </Link>
-            <Link href="creator" fontWeight={500}>
+            <Link href="/creator" fontWeight={500} onClick={handleCreateEvent}>
               Create Events
             </Link>
             {login ? (
               <>
-                
                 <Link onClick={handleLogout} fontWeight={500}>
                   Logout
                 </Link>
@@ -155,6 +172,7 @@ function AppNavbar({ data, setData }) {
                 </Link>
               </>
             )}
+            {role === 'eventPlanner' && <StarIcon />}
           </Stack>
         </Box>
       ) : null}

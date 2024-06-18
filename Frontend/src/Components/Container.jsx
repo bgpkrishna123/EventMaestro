@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import {
   Grid,
   Box,
@@ -52,7 +51,7 @@ const Container = ({ data, setData }) => {
                 <SkeletonText noOfLines={4} spacing="4" />
               </Box>
             ))
-          : data.slice(0, 8).map((item, index) => ( 
+          : data.slice(0, 8).map((item, index) => (
               <MotionBox
                 key={index}
                 p={4}
@@ -65,6 +64,7 @@ const Container = ({ data, setData }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                pb={12} // Add padding to the bottom to ensure button does not overlap
               >
                 <Image
                   src={item.imageUrl[0]}
@@ -81,18 +81,21 @@ const Container = ({ data, setData }) => {
                   <Text fontSize="lg" fontWeight="bold" mb={4}>
                     Starting ticket with: ₹{item.Price}
                   </Text>
-                  <Button
-                    bg="#FEAEA3"
-                    color="white"
-                    _hover={{ bg: "#A0522D" }}
-                    position="absolute"
-                    bottom={4}
-                    right={4}
-                    onClick={() => handleDetails(item)}
-                  >
-                    Details
-                  </Button>
                 </Box>
+                <Button
+                  bg="#FEAEA3"
+                  color="white"
+                  _hover={{ bg: "#A0522D" }}
+                  position="absolute"
+                  bottom={4}
+                  left="50%"
+                  transform="translateX(-50%)"
+                  width="calc(100% - 16px)" 
+                  margin="0 8px"
+                  onClick={() => handleDetails(item)}
+                >
+                  Details
+                </Button>
               </MotionBox>
             ))}
       </Grid>

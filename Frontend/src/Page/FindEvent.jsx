@@ -32,14 +32,14 @@ const FindEvent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchData(); 
+    fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(`${url}/events`);
       setSearchResults(response.data.events);
-      setIsLoading(false); 
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching events:", error);
     }
@@ -48,7 +48,7 @@ const FindEvent = () => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(`${url}/events/search?title=${searchQuery}`);
-      setSearchResults(response.data); 
+      setSearchResults(response.data);
     } catch (error) {
       console.error("Error searching events:", error);
     }
@@ -131,11 +131,11 @@ const FindEvent = () => {
                 borderRadius="lg"
                 boxShadow="md"
                 textAlign="center"
-                style={{ maxWidth: "100%" }}
                 position="relative"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                pb={12} // Added padding to the bottom to make space for the button
               >
                 <Image
                   src={item.imageUrl[0]}
@@ -152,18 +152,21 @@ const FindEvent = () => {
                   <Text fontSize="lg" fontWeight="bold" mb={4}>
                     Starting ticket with: ₹{item.Price}
                   </Text>
-                  <Button
-                    bg="#FEAEA3"
-                    color="white"
-                    _hover={{ bg: "#A0522D" }}
-                    position="absolute"
-                    bottom={4}
-                    right={4}
-                    onClick={() => handleDetails(item)}
-                  >
-                    Details
-                  </Button>
                 </Box>
+                <Button
+                  bg="#FEAEA3"
+                  color="white"
+                  _hover={{ bg: "#A0522D" }}
+                  position="absolute"
+                  bottom={4}
+                  left="50%"
+                  transform="translateX(-50%)"
+                  width="calc(100% - 16px)" // Adjust width to fit within the container
+                  margin="0 8px"
+                  onClick={() => handleDetails(item)}
+                >
+                  Details
+                </Button>
               </MotionBox>
             ))
           )}
@@ -172,20 +175,21 @@ const FindEvent = () => {
           <Button
             onClick={handlePreviousPage}
             disabled={currentPage === 1}
-            style={{ opacity: currentPage === 1 ? 0 : 1 }}
+            style={{ opacity: currentPage === 1 ? 0.5 : 1 }}
           >
             Previous
           </Button>
           <Button
             bg="#FEAEA3"
             color="white"
+            _hover={{ bg: "#A0522D" }}
           >
             {currentPage}
           </Button>
           <Button
             onClick={handleNextPage}
             disabled={currentPage * itemsPerPage >= searchResults.length}
-            style={{ opacity: currentPage * itemsPerPage >= searchResults.length ? 0 : 1 }}
+            style={{ opacity: currentPage * itemsPerPage >= searchResults.length ? 0.5 : 1 }}
           >
             Next
           </Button>
