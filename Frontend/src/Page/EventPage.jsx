@@ -70,6 +70,16 @@ const EventDetailsPage = () => {
   }
 
   const handleBookTicket = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast({
+        title: "Please log in first to book a ticket.",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
     if (!selectedTicketType) {
       toast({
         title: "Please select a ticket type",
