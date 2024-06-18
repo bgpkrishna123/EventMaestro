@@ -7,6 +7,7 @@ import {
   Image,
   Text,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -65,9 +66,26 @@ const BookedEvents = () => {
           gap={8}
         >
           {data.length === 0 ? (
-            <Box w="100%" textAlign="center">
-              <Text fontSize="2xl" fontWeight="bold">No Ticket Found</Text>
-            </Box>
+            <Flex justify="center" align="center" mt={8} mb={10}>
+              <Box
+                p={8}
+                bg="white"
+                borderRadius="md"
+                boxShadow="lg"
+                textAlign="center"
+              >
+                <Text fontSize="xl" mb={4}>No Tickets Found.</Text>
+                <Text mb={8}>Click below to select your event.</Text>
+                <Button
+                  bg="#FEAEA3"
+                  color="white"
+                  _hover={{ bg: "#A0522D" }}
+                  onClick={() => navigate("/findEvents")}
+                >
+                  View Events
+                </Button>
+              </Box>
+            </Flex>
           ) : (
             data.map((item, index) => (
               <MotionBox
