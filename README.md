@@ -12,13 +12,136 @@ Backend:  https://eventmaestro.onrender.com
 
 ## Directory Structure
 
-## Backend Folder Structure:-
-<img width="156" alt="image" src="https://github.com/bgpkrishna123/EventMaestro/assets/157980081/dffaa461-75be-450c-8276-de47f3c91f30">
+# EventMaestro Directory Structure
 
-</br>
+**├── Backend/**<br>
+│   ├── .env<br>
+│   ├── .gitignore<br>
+│   ├── index.js<br>
+│   ├── package-lock.json<br>
+│   ├── package.json<br>
+│   └── src/<br>
+│       ├── Middleware/<br>
+│       │   ├── access.js<br>
+│       │   └── auth.js<br>
+│       ├── configs/<br>
+│       │   └── db.js<br>
+│       ├── controllers/<br>
+│       │   ├── event.js<br>
+│       │   └── user.js<br>
+│       ├── models/<br>
+│       │   ├── blacklist.Schema.js<br>
+│       │   ├── event.schema.js<br>
+│       │   └── user.schema.js<br>
+│       └── routes/<br>
+│           ├── event.routes.js<br>
+│           └── user.routes.js<br>
+**├── Frontend/**<br>
+│   ├── .env<br>
+│   ├── .eslintrc.cjs<br>
+│   ├── .gitignore<br>
+│   ├── README.md<br>
+│   ├── index.html<br>
+│   ├── package-lock.json<br>
+│   ├── package.json<br>
+│   ├── src/<br>
+│   │   ├── App.css<br>
+│   │   ├── App.jsx<br>
+│   │   ├── Components/<br>
+│   │   │   ├── AppNavbar.jsx<br>
+│   │   │   ├── BookedEvents.jsx<br>
+│   │   │   ├── Carouj.jsx<br>
+│   │   │   ├── Carousel.jsx<br>
+│   │   │   ├── Checkout.jsx<br>
+│   │   │   ├── Container.jsx<br>
+│   │   │   ├── EventCreationModal.jsx<br>
+│   │   │   ├── FloatingContactForm.jsx<br>
+│   │   │   ├── Footer.jsx<br>
+│   │   │   ├── InternationalWeddingPlanner.jsx<br>
+│   │   │   ├── Middle.jsx<br>
+│   │   │   ├── OurServices.jsx<br>
+│   │   │   ├── Payment.jsx<br>
+│   │   │   ├── VideoSection.jsx<br>
+│   │   │   ├── WelcomeSection.jsx<br>
+│   │   │   └── vars.js<br>
+│   │   ├── Page/<br>
+│   │   │   ├── EventPage.jsx<br>
+│   │   │   ├── FindEvent.jsx<br>
+│   │   │   ├── HomePage.jsx<br>
+│   │   │   └── Login.jsx<br>
+│   │   ├── Routes/<br>
+│   │   │   └── AllRoutes.jsx<br>
+│   │   ├── Styles/<br>
+│   │   │   ├── Checkout.css<br>
+│   │   │   ├── Container.css<br>
+│   │   │   ├── FloatingContactForm.css<br>
+│   │   │   ├── InternationalWeddingPlanner.css<br>
+│   │   │   ├── Login.css<br>
+│   │   │   ├── Middle.css<br>
+│   │   │   ├── OurServices.css<br>
+│   │   │   ├── Payment.css<br>
+│   │   │   ├── VideosSection.css<br>
+│   │   │   └── WelcomeSection.css<br>
+│   │   ├── admin/<br>
+│   │   │   ├── Admin.jsx<br>
+│   │   │   └── admin.css<br>
+│   │   ├── assets/<br>
+│   │   │   ├── Img_1.jpg<br>
+│   │   │   ├── Img_2.png<br>
+│   │   │   ├── Img_3.png<br>
+│   │   │   ├── Img_4.png<br>
+│   │   │   ├── Logo.jpeg<br>
+│   │   │   ├── Logo.png<br>
+│   │   │   ├── airplane.png<br>
+│   │   │   ├── artist.png<br>
+│   │   │   ├── balloons.png<br>
+│   │   │   ├── bg.jpg<br>
+│   │   │   ├── brand.png<br>
+│   │   │   ├── chip.png<br>
+│   │   │   ├── cocktail.png<br>
+│   │   │   ├── corporate.png<br>
+│   │   │   ├── couple.png<br>
+│   │   │   ├── curtains.png<br>
+│   │   │   ├── dish.png<br>
+│   │   │   ├── fashion.png<br>
+│   │   │   ├── garlands.png<br>
+│   │   │   ├── globe-1.jpg<br>
+│   │   │   ├── guests.png<br>
+│   │   │   ├── hospitality.png<br>
+│   │   │   ├── location.png<br>
+│   │   │   ├── management.png<br>
+│   │   │   ├── marker.png<br>
+│   │   │   ├── meeting.png<br>
+│   │   │   ├── musical-note.png<br>
+│   │   │   ├── phone1.png<br>
+│   │   │   ├── photo-camera.png<br>
+│   │   │   ├── react.svg<br>
+│   │   │   ├── seminar.png<br>
+│   │   │   ├── singer.png<br>
+│   │   │   ├── slider1.jpg<br>
+│   │   │   ├── title-icon.png<br>
+│   │   │   ├── v3_f1.jpg<br>
+│   │   │   ├── v3_f2.jpg<br>
+│   │   │   ├── v3_f3.jpg<br>
+│   │   │   ├── video-camera.png<br>
+│   │   │   ├── virtual.png<br>
+│   │   │   ├── visa.png<br>
+│   │   │   ├── w-chat.png<br>
+│   │   │   ├── waiter.png<br>
+│   │   │   ├── wedding-rings.png<br>
+│   │   │   ├── wedding.png<br>
+│   │   │   └── whatsapp-icon.png<br>
+│   │   ├── index.css<br>
+│   │   ├── main.jsx<br>
+│   │   ├── postcss.config.js<br>
+│   │   └── styles/<br>
+│   │       └── admin.css<br>
+│   ├── tailwind.config.js<br>
+│   ├── vercel.json<br>
+│   └── vite.config.js<br>
+└── README.md<br>
 
-## Frontend Folder Structure:-
-<img width="177" alt="image" src="https://github.com/bgpkrishna123/EventMaestro/assets/157980081/8a5e88b2-89bf-406b-a1ba-82774ebfb47f">
+
 
 ## Video Walkthrough of the project
 Attach a concise video walkthrough of all of the features [ 1 - 3 minutes ]
