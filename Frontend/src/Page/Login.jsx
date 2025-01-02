@@ -3,7 +3,7 @@ import { Box, Flex, Image, Text, FormControl, FormLabel, Input, Button, Link, us
 import axios from 'axios';
 import url from '../Components/vars';
 import AppNavbar from '../Components/AppNavbar';
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from '../Components/Footer';
 
 
@@ -17,8 +17,7 @@ const Login = () => {
     username: '',
     email: '',
     password: '',
-    profilePicture: '',
-    eventsBooked: [],
+
   });
 
   const handleChange = (e) => {
@@ -68,7 +67,7 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userDetails', JSON.stringify(response.data));
 
-    
+
       navigate("/")
     } catch (error) {
       toast({
@@ -119,19 +118,7 @@ const Login = () => {
 
   return (
     <>
-    <Flex minH="100vh" align="center" justify="center" flexDirection={{ base: 'column', md: 'row' }} pl={{ base: 0, md: 10 }}>
-      {isLoginForm && (
-        <Box flex={{ base: 'none', md: '0 0 40%' }} w="100%" h={{ base: 'auto', md: '90vh' }} pl={{ base: 0, md: 10 }}>
-          <Image
-            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg"
-            alt="Background"
-            objectFit="cover"
-            w="100%"
-            h="100%"
-            borderRadius="50%"
-          />
-        </Box>
-      )}
+
 
       <Box flex={{ base: 'none', md: '0 0 60%' }} w="100%" pl={{ base: 0, md: 10 }} pr={{ base: 0, md: 80 }}>
         <Text as="h1" fontSize="3xl" mb={6} textAlign="center">
@@ -167,16 +154,8 @@ const Login = () => {
                       required
                     />
                   </FormControl>
-                  <FormControl id="profilePicture" mb={4}>
-                    <FormLabel>Profile Picture</FormLabel>
-                    <Input
-                      type="text"
-                      name="profilePicture"
-                      value={formData.profilePicture}
-                      onChange={handleChange}
-                      placeholder="Enter your profile picture URL"
-                    />
-                  </FormControl>
+
+
                   <FormControl id="role" mb={4}>
                     <Checkbox
                       isChecked={isEventPlanner}
@@ -253,8 +232,8 @@ const Login = () => {
           />
         </Box>
       )}
-    </Flex>
-  </>
+    </ >
+ 
   );
 };
 
